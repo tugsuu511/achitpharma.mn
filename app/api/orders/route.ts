@@ -75,3 +75,28 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: "BAD_REQUEST" }, { status: 400 });
   }
 }
+
+export async function GET() {
+  const orders = await prisma.order.findMany({
+    orderBy: { createdAt: "desc" },
+    take: 50,
+    select: {
+      id: true,
+      name: true,
+      phone: true,
+      address: true,
+      status: true,
+      totalMnt: true,
+      createdAt: true,
+      items: {
+        select: {
+          qty: true,
+          priceMnt: true,
+          product: { select: { sku: true, name: true } },
+        },
+      },
+    },
+  });
+
+  return NextResponse.json({ ok: true, orders });
+}
