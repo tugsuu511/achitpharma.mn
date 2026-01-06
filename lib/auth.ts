@@ -1,26 +1,27 @@
-import NextAuth from "next-auth";
 import type { NextAuthOptions } from "next-auth";
-import Credentials from "next-auth/providers/credentials";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 
-const CredSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(6),
-});
-
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma),
+  // ✅ Credentials provider зөвхөн JWT strategy дээр ажиллана
   session: { strategy: "jwt" },
+
+  // ✅ secret заавал
   secret: process.env.NEXTAUTH_SECRET,
 
   providers: [
-    Credentials({
-      credentials: { email: {}, password: {} },
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" },
+      },
       async authorize(credentials) {
-        const { email, password } = CredSchema.parse(credentials);
+        const email = credentials?.email?.toLowerCase().trim();
+        const password = credentials?.password ?? "";
+
+        if (!email || !password) return null;
 
         const user = await prisma.user.findUnique({
           where: { email },
@@ -32,11 +33,12 @@ export const authOptions: NextAuthOptions = {
         const ok = await bcrypt.compare(password, user.passwordHash);
         if (!ok) return null;
 
+        // types/next-auth.d.ts дээр User.role required болсон тул role буцаана
         return {
           id: user.id,
           email: user.email,
           name: user.name ?? "Admin",
-          role: user.role === "ADMIN" ? "ADMIN" : "USER",
+          role: (user.role as "USER" | "ADMIN") ?? "USER",
         };
       },
     }),
@@ -44,7 +46,7 @@ export const authOptions: NextAuthOptions = {
 
   callbacks: {
     async jwt({ token }) {
-      if (typeof token.email !== "string") return token;
+      if (!token.email) return token;
 
       const dbUser = await prisma.user.findUnique({
         where: { email: token.email },
@@ -53,15 +55,17 @@ export const authOptions: NextAuthOptions = {
 
       if (dbUser) {
         token.id = dbUser.id;
-        token.role = dbUser.role === "ADMIN" ? "ADMIN" : "USER";
+        token.role = (dbUser.role as "USER" | "ADMIN") ?? "USER";
         token.name = dbUser.name ?? token.name;
       }
       return token;
     },
 
     async session({ session, token }) {
-      if (token.id) session.user.id = token.id;
+      session.user.id = token.id ?? session.user.id;
       session.user.role = token.role ?? "USER";
+      session.user.email = token.email ?? session.user.email;
+      session.user.name = token.name ?? session.user.name;
       return session;
     },
   },
@@ -70,7 +74,3 @@ export const authOptions: NextAuthOptions = {
     signIn: "/admin/login",
   },
 };
-
-const handler = NextAuth(authOptions);
-
-export { handler as GET, handler as POST };

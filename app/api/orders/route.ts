@@ -19,6 +19,7 @@ const OrderSchema = z.object({
     .min(1),
 });
 
+
 // POST /api/orders
 export async function POST(req: Request) {
   try {
@@ -100,3 +101,4 @@ export async function GET() {
 
   return NextResponse.json({ ok: true, orders });
 }
+
