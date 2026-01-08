@@ -72,7 +72,7 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ ok: true, order });
-  } catch (e) {
+  } catch  {
     return NextResponse.json({ ok: false, error: "BAD_REQUEST" }, { status: 400 });
   }
 }

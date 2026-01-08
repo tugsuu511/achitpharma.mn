@@ -1,16 +1,28 @@
 import type { NextAuthOptions } from "next-auth";
+import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-import bcrypt from "bcryptjs";
-import { prisma } from "@/lib/prisma";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import { PrismaClient } from "@prisma/client";
+import { compare } from "bcryptjs";
+import type { UserRole } from "@/types/next-auth"; // эсвэл relative замаар
+
+const prisma = new PrismaClient();
+
+function normalizeRole(role: unknown): UserRole {
+  return role === "ADMIN" ? "ADMIN" : "USER";
+}
 
 export const authOptions: NextAuthOptions = {
-  // ✅ Credentials provider зөвхөн JWT strategy дээр ажиллана
+  adapter: PrismaAdapter(prisma),
+  pages: { signIn: "/auth" },
   session: { strategy: "jwt" },
 
-  // ✅ secret заавал
-  secret: process.env.NEXTAUTH_SECRET,
-
   providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    }),
+
     CredentialsProvider({
       name: "Credentials",
       credentials: {
@@ -19,58 +31,49 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
         const email = credentials?.email?.toLowerCase().trim();
-        const password = credentials?.password ?? "";
+        const password = credentials?.password;
 
         if (!email || !password) return null;
 
-        const user = await prisma.user.findUnique({
-          where: { email },
-          select: { id: true, email: true, name: true, passwordHash: true, role: true },
-        });
-
+        const user = await prisma.user.findUnique({ where: { email } });
         if (!user?.passwordHash) return null;
 
-        const ok = await bcrypt.compare(password, user.passwordHash);
+        const ok = await compare(password, user.passwordHash);
         if (!ok) return null;
 
-        // types/next-auth.d.ts дээр User.role required болсон тул role буцаана
         return {
           id: user.id,
           email: user.email,
-          name: user.name ?? "Admin",
-          role: (user.role as "USER" | "ADMIN") ?? "USER",
+          name: user.name ?? undefined,
+          role: normalizeRole(user.role),
         };
       },
     }),
   ],
 
   callbacks: {
-    async jwt({ token }) {
-      if (!token.email) return token;
-
-      const dbUser = await prisma.user.findUnique({
-        where: { email: token.email },
-        select: { id: true, role: true, name: true },
-      });
-
-      if (dbUser) {
-        token.id = dbUser.id;
-        token.role = (dbUser.role as "USER" | "ADMIN") ?? "USER";
-        token.name = dbUser.name ?? token.name;
+    async jwt({ token, user }) {
+      if (user) {
+        token.role = user.role; // ✅ any хэрэггүй
       }
+
+      if (token.email) {
+        const dbUser = await prisma.user.findUnique({
+          where: { email: token.email },
+          select: { role: true, id: true },
+        });
+
+        if (dbUser?.id) token.sub = dbUser.id;
+        if (dbUser?.role) token.role = normalizeRole(dbUser.role);
+      }
+
       return token;
     },
 
     async session({ session, token }) {
-      session.user.id = token.id ?? session.user.id;
+      session.user.id = token.sub ?? "";
       session.user.role = token.role ?? "USER";
-      session.user.email = token.email ?? session.user.email;
-      session.user.name = token.name ?? session.user.name;
       return session;
     },
-  },
-
-  pages: {
-    signIn: "/admin/login",
   },
 };
