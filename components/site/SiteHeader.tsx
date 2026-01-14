@@ -65,9 +65,7 @@ function NavLinks({
 export function SiteHeader() {
   const locale = useLocale();
   const [open, setOpen] = useState(false);
-
   const pathname = usePathname();
-
   const { data: session, status } = useSession();
   const isAuthed = status === "authenticated" && !!session?.user;
 
