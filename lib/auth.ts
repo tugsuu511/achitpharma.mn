@@ -185,7 +185,7 @@ export const authOptions: NextAuthOptions = {
       if (url.startsWith("/")) return `${baseUrl}${url}`;
       // Handle same origin URLs
       if (new URL(url).origin === baseUrl) return url;
-      // Default to base URL (frontend will handle role-based redirect via /api/auth/after)
+      // Default to base URL (frontend will handle role-based redirect via /auth/after)
       return baseUrl;
     },
   },

@@ -109,7 +109,7 @@ export function AuthForm({ mode }: { mode: Mode }) {
     try {
       await signIn(
         "google",
-        { callbackUrl: "/api/auth/after", redirect: true },
+        { callbackUrl: "/auth/after", redirect: true },
         { prompt: "select_account" }
       );
     } catch {

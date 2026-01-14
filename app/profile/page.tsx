@@ -7,7 +7,7 @@
 //   const session = await getServerSession(authOptions);
 
 //   // ✅ нэвтрээгүй бол login page руу
-//   if (!session?.user?.id) redirect("/api?mode=login");
+//   if (!session?.user?.id) redirect("/auth?mode=login");
 
 //   // ✅ DB дээрх user + сүүлийн захиалгууд
 //   const user = await prisma.user.findUnique({
@@ -17,7 +17,7 @@
 //     },
 //   });
 
-//   if (!user) redirect("/api?mode=login");
+//   if (!user) redirect("/auth?mode=login");
 
 //   return (
 //     <div className="max-w-2xl mx-auto p-6 space-y-4">
@@ -59,14 +59,14 @@ export const dynamic = "force-dynamic"; // ✅ cache-с болж хуучин da
 
 export default async function ProfilePage() {
   const session = await getServerSession(authOptions);
-  if (!session?.user?.id) redirect("/api?mode=login");
+  if (!session?.user?.id) redirect("/auth?mode=login");
 
   const dbUser = await prisma.user.findUnique({
     where: { id: session.user.id },
     select: { id: true, email: true, name: true, image: true },
   });
 
-  if (!dbUser) redirect("/api?mode=login");
+  if (!dbUser) redirect("/auth?mode=login");
 
   const sessionEmail = session.user.email ?? "";
   const dbEmail = dbUser.email ?? "";

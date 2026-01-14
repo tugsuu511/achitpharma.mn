@@ -16,7 +16,7 @@ export function AuthPage() {
   const mode = parseMode(searchParams.get("mode"));
 
   const setMode = (m: Mode) => {
-    router.replace(`/api?mode=${m}`);
+    router.replace(`/auth?mode=${m}`);
   };
 
   return (
