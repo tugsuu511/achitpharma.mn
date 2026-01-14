@@ -31,8 +31,6 @@ export default async function AdminOrdersPage() {
       },
     },
   });
-
-  // Prisma enum/string → OrderDTO статус руу type-safe cast
   const data = orders as unknown as OrderDTO[];
 
   return (
