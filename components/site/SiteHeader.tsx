@@ -4,7 +4,9 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, LogIn, UserPlus } from "lucide-react";
+import { Menu, LogIn, UserPlus, LogOut, User } from "lucide-react";
+
+import { useSession, signOut } from "next-auth/react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -63,9 +65,13 @@ function NavLinks({
 export function SiteHeader() {
   const locale = useLocale();
   const [open, setOpen] = useState(false);
-  
+
   const pathname = usePathname();
-  const hideAuth = pathname?.startsWith("/api"); // зөвхөн /api дээр нуух бол pathname === "/api" гэж болно
+
+  const { data: session, status } = useSession();
+  const isAuthed = status === "authenticated" && !!session?.user;
+
+  const hideAuthButtons = pathname?.startsWith("/api");
 
   const navLinks: NavItem[] = [
     { href: "/", key: "nav.home" },
@@ -79,7 +85,14 @@ export function SiteHeader() {
   const loginHref = "/api?mode=login";
   const signupHref = "/api?mode=signup";
 
-  
+  const userLabel =
+    session?.user?.name ??
+    session?.user?.email ??
+    (locale === "mn" ? "Профайл" : "Profile");
+
+  async function handleSignOut() {
+    await signOut({ callbackUrl: "/" });
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -112,7 +125,8 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <LanguageToggle />
 
-          {!hideAuth && (
+          {/* ✅ Auth area */}
+          {isAuthed ? (
             <>
               <Button
                 asChild
@@ -120,13 +134,46 @@ export function SiteHeader() {
                 size="sm"
                 className="hidden md:inline-flex"
               >
-                <Link href="/api?mode=login">Нэвтрэх</Link>
+                <Link href="/profile" title={userLabel}>
+                  <User className="h-4 w-4 mr-2" />
+                  {locale === "mn" ? "Профайл" : "Profile"}
+                </Link>
               </Button>
 
-              <Button asChild size="sm" className="hidden md:inline-flex">
-                <Link href="/api?mode=signup">Бүртгүүлэх</Link>
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                className="hidden md:inline-flex"
+                onClick={handleSignOut}
+              >
+                <LogOut className="h-4 w-4 mr-2" />
+                {locale === "mn" ? "Гарах" : "Logout"}
               </Button>
             </>
+          ) : (
+            !hideAuthButtons && (
+              <>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="sm"
+                  className="hidden md:inline-flex"
+                >
+                  <Link href={loginHref}>
+                    <LogIn className="h-4 w-4 mr-2" />
+                    {locale === "mn" ? "Нэвтрэх" : "Login"}
+                  </Link>
+                </Button>
+
+                <Button asChild size="sm" className="hidden md:inline-flex">
+                  <Link href={signupHref}>
+                    <UserPlus className="h-4 w-4 mr-2" />
+                    {locale === "mn" ? "Бүртгүүлэх" : "Sign up"}
+                  </Link>
+                </Button>
+              </>
+            )
           )}
 
           {/* CTA */}
@@ -159,23 +206,50 @@ export function SiteHeader() {
                   onNavigate={() => setOpen(false)}
                 />
 
-                {/* Mobile: Auth buttons */}
-                <div className="mt-4 grid grid-cols-2 gap-2">
-                  <Button
-                    asChild
-                    variant="outline"
-                    onClick={() => setOpen(false)}
-                  >
-                    <Link href={loginHref}>
-                      {locale === "mn" ? "Нэвтрэх" : "Login"}
-                    </Link>
-                  </Button>
-                  <Button asChild onClick={() => setOpen(false)}>
-                    <Link href={signupHref}>
-                      {locale === "mn" ? "Бүртгүүлэх" : "Sign up"}
-                    </Link>
-                  </Button>
-                </div>
+                {/* ✅ Mobile: Auth */}
+                {isAuthed ? (
+                  <div className="mt-4 grid gap-2">
+                    <Button
+                      asChild
+                      variant="outline"
+                      onClick={() => setOpen(false)}
+                    >
+                      <Link href="/profile">
+                        <User className="h-4 w-4 mr-2" />
+                        {locale === "mn" ? "Профайл" : "Profile"}
+                      </Link>
+                    </Button>
+
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={async () => {
+                        setOpen(false);
+                        await handleSignOut();
+                      }}
+                    >
+                      <LogOut className="h-4 w-4 mr-2" />
+                      {locale === "mn" ? "Гарах" : "Logout"}
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="mt-4 grid grid-cols-2 gap-2">
+                    <Button
+                      asChild
+                      variant="outline"
+                      onClick={() => setOpen(false)}
+                    >
+                      <Link href={loginHref}>
+                        {locale === "mn" ? "Нэвтрэх" : "Login"}
+                      </Link>
+                    </Button>
+                    <Button asChild onClick={() => setOpen(false)}>
+                      <Link href={signupHref}>
+                        {locale === "mn" ? "Бүртгүүлэх" : "Sign up"}
+                      </Link>
+                    </Button>
+                  </div>
+                )}
 
                 <Button asChild className="mt-4" onClick={() => setOpen(false)}>
                   <Link href="/products">{t("header.order", locale)}</Link>
