@@ -10,10 +10,7 @@ type Locale = "mn" | "en";
 const DEFAULT_LOCALE: Locale = "mn";
 
 function subscribeLocale(callback: () => void) {
-  // locale солих custom event
   window.addEventListener("localechange", callback);
-
-
   window.addEventListener("storage", callback);
 
   return () => {
@@ -25,8 +22,8 @@ function subscribeLocale(callback: () => void) {
 export function SiteFooter() {
   const locale = useSyncExternalStore(
     subscribeLocale,
-    () => getLocale() as Locale, 
-    () => DEFAULT_LOCALE        
+    () => getLocale() as Locale,
+    () => DEFAULT_LOCALE
   );
 
   const navLinks = [
@@ -42,9 +39,11 @@ export function SiteFooter() {
     <footer className="w-full border-t bg-muted/50">
       <div className="container mx-auto px-4 md:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          {/* Column 1: Company Info */}
+
           <div className="space-y-4">
-            <h3 className="font-semibold text-lg">{t("footer.company", locale)}</h3>
+            <h3 className="font-semibold text-lg">
+              {t("footer.company", locale)}
+            </h3>
             <p className="text-sm text-muted-foreground">
               {t("footer.mission", locale)}
             </p>
@@ -52,8 +51,13 @@ export function SiteFooter() {
 
           {/* Column 2: Quick Links */}
           <div className="space-y-4">
-            <h3 className="font-semibold text-lg">{t("footer.quickLinks", locale)}</h3>
-            <nav className="flex flex-col space-y-2" aria-label="Footer navigation">
+            <h3 className="font-semibold text-lg">
+              {t("footer.quickLinks", locale)}
+            </h3>
+            <nav
+              className="flex flex-col space-y-2"
+              aria-label="Footer navigation"
+            >
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -68,14 +72,20 @@ export function SiteFooter() {
 
           {/* Column 3: Contact Info */}
           <div className="space-y-4">
-            <h3 className="font-semibold text-lg">{t("footer.contact", locale)}</h3>
+            <h3 className="font-semibold text-lg">
+              {t("footer.contact", locale)}
+            </h3>
             <div className="space-y-2 text-sm text-muted-foreground">
               <div>
-                <span className="font-medium">{t("footer.phone", locale)}: </span>
+                <span className="font-medium">
+                  {t("footer.phone", locale)}:{" "}
+                </span>
                 <span>+976 11 123456</span>
               </div>
               <div>
-                <span className="font-medium">{t("footer.email", locale)}: </span>
+                <span className="font-medium">
+                  {t("footer.email", locale)}:{" "}
+                </span>
                 <a
                   href="mailto:info@achitpharma.mn"
                   className="hover:text-primary transition-colors"
@@ -84,7 +94,9 @@ export function SiteFooter() {
                 </a>
               </div>
               <div>
-                <span className="font-medium">{t("footer.address", locale)}: </span>
+                <span className="font-medium">
+                  {t("footer.address", locale)}:{" "}
+                </span>
                 <span>Улаанбаатар хот, ХУД</span>
               </div>
               <p className="text-xs mt-3">{t("footer.workingHours", locale)}</p>
@@ -105,7 +117,7 @@ export function SiteFooter() {
                 <Facebook className="h-5 w-5" />
               </a>
               <a
-                href="https://instagram.com/achitpharma"
+                href="https://instagram.com/achit.pharma/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -128,10 +140,16 @@ export function SiteFooter() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
           <p>{t("footer.copyright", locale)}</p>
           <div className="flex space-x-4">
-            <Link href="/privacy" className="hover:text-primary transition-colors">
+            <Link
+              href="/privacy"
+              className="hover:text-primary transition-colors"
+            >
               {t("footer.privacy", locale)}
             </Link>
-            <Link href="/terms" className="hover:text-primary transition-colors">
+            <Link
+              href="/terms"
+              className="hover:text-primary transition-colors"
+            >
               {t("footer.terms", locale)}
             </Link>
           </div>
