@@ -71,8 +71,6 @@ export function SiteHeader() {
   const { data: session, status } = useSession();
   const isAuthed = status === "authenticated" && !!session?.user;
 
-  const hideAuthButtons = pathname?.startsWith("/api");
-
   const navLinks: NavItem[] = [
     { href: "/", key: "nav.home" },
     { href: "/about", key: "nav.about" },
@@ -82,8 +80,9 @@ export function SiteHeader() {
     { href: "/contact", key: "nav.contact" },
   ];
 
-  const loginHref = "/api?mode=login";
-  const signupHref = "/api?mode=signup";
+  const loginHref = "/auth?mode=login";
+  const signupHref = "/auth?mode=signup";
+  const hideAuthButtons = pathname?.startsWith("/auth");
 
   const userLabel =
     session?.user?.name ??

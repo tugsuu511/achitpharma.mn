@@ -8,8 +8,7 @@ export const dynamic = "force-dynamic"; // ✅ cache-с хамгаална
 export default async function AfterAuthPage() {
   const session = await getServerSession(authOptions);
 
-  if (!session?.user?.email) redirect("/api?mode=login");
-
+  if (!session?.user?.email) redirect("/auth?mode=login");
   const dbUser = await prisma.user.findUnique({
     where: { email: session.user.email },
     select: { role: true },

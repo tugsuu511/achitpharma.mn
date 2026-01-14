@@ -87,12 +87,11 @@ export function AuthForm({ mode }: { mode: Mode }) {
         setMsg("Бүртгэл амжилттай ✅ Одоо нэвтэрч байна...");
       }
 
-      await signIn("credentials", {
-        email: normalizedEmail,
-        password,
-        redirect: true,
-        callbackUrl: "/auth/after",
-      });
+      await signIn(
+        "google",
+        { callbackUrl: "/auth/after", redirect: true },
+        { prompt: "select_account" }
+      );
     } catch {
       setErrors({ form: "Системийн алдаа гарлаа. Дахин оролдоно уу." });
     } finally {
@@ -111,7 +110,7 @@ export function AuthForm({ mode }: { mode: Mode }) {
       await signIn(
         "google",
         { callbackUrl: "/api/auth/after", redirect: true },
-        { prompt: "select_account" } 
+        { prompt: "select_account" }
       );
     } catch {
       setErrors({ form: "Google нэвтрэхэд алдаа гарлаа. Дахин оролдоно уу." });
