@@ -130,6 +130,203 @@ const translations = {
       copyright: "© 2025 Ачит Алтан Ундарга ХХК. Бүх эрх хуулиар хамгаалагдсан.",
       disclaimer: "Энэ сайт нь мэдээллийн зорилготой. Эмчилгээний зөвлөгөөг мэргэжлийн эмчээс аваарай.",
     },
+    about: {
+      hero: {
+        title: "Бидний тухай",
+        subtitle: "Хүүхдийн эрүүл мэндийг дэмжихэд зориулсан бидний аялал",
+        cta: "Бүтээгдэхүүн үзэх",
+      },
+      story: {
+        title: "Манай түүх",
+        content: "Ачит Алтан Ундарга ХХК нь хүүхдийн эрүүл мэндийг дэмжихэд зориулсан найдвартай, чанартай бүтээгдэхүүн үйлдвэрлэх зорилготойгоор байгуулагдсан. Бид эмнэлгийн мэргэжилтнүүдтэй хамтран ажиллаж, хүүхдүүдийн эрүүл мэндэд ээлтэй бүтээгдэхүүнийг бүтээж байна.",
+      },
+      mission: {
+        title: "Эрхэм зорилго",
+        values: {
+          quality: {
+            title: "Чанар",
+            description: "Олон улсын стандартын дагуу шалгагдсан, найдвартай бүтээгдэхүүн",
+          },
+          care: {
+            title: "Анхаарал",
+            description: "Хүүхдийн эрүүл мэндэд анхаарал тавьж, хамгаалах",
+          },
+          innovation: {
+            title: "Шинэчлэл",
+            description: "Шинэ технологи, судалгааны үр дүнг ашиглах",
+          },
+          trust: {
+            title: "Итгэл",
+            description: "Хэрэглэгчдэд итгэлтэй, ил тод харилцаа",
+          },
+        },
+      },
+      timeline: {
+        title: "Манай замнал",
+        items: {
+          founded: {
+            year: "2020",
+            title: "Байгуулагдсан",
+            description: "Ачит Алтан Ундарга ХХК байгуулагдсан",
+          },
+          firstProduct: {
+            year: "2021",
+            title: "Эхний бүтээгдэхүүн",
+            description: "Adva-Iron бүтээгдэхүүн гаргасан",
+          },
+          expansion: {
+            year: "2023",
+            title: "Өргөтгөл",
+            description: "Бүтээгдэхүүний цувралыг өргөжүүлсэн",
+          },
+          partnership: {
+            year: "2024",
+            title: "Хамтрал",
+            description: "Papa Logistics-тай хамтран ажиллах гэрээ байгуулсан",
+          },
+        },
+      },
+      team: {
+        title: "Бидний баг",
+        description: "Мэргэжлийн баг, туршлагатай мэргэжилтнүүд",
+      },
+      cta: {
+        title: "Бидэнтэй нэгдээрэй",
+        description: "Хүүхдийн эрүүл мэндийг дэмжихэд бидэнтэй хамтран ажиллаарай",
+        button: "Холбоо барих",
+      },
+    },
+    contact: {
+      title: "Холбоо барих",
+      subtitle: "Бидэнтэй холбогдох",
+      info: {
+        address: {
+          title: "Хаяг",
+          value: "Улаанбаатар хот, Монгол улс",
+        },
+        phone: {
+          title: "Утас",
+          value: "+976 11 123456",
+        },
+        email: {
+          title: "Имэйл",
+          value: "info@achitpharma.mn",
+        },
+        hours: {
+          title: "Ажлын цаг",
+          value: "Даваа - Баасан, 08:30 - 17:30",
+        },
+      },
+      form: {
+        name: "Нэр",
+        phone: "Утас",
+        email: "Имэйл",
+        subject: "Гарчиг",
+        message: "Мессеж",
+        submit: "Илгээх",
+        success: "Амжилттай илгээгдлээ",
+        error: "Алдаа гарлаа",
+      },
+      map: {
+        title: "Байршил",
+      },
+    },
+    educationPage: {
+      hero: {
+        title: "Эрүүл мэндийн мэдээлэл",
+        subtitle: "Хүүхдийн эрүүл мэнд, хооллолт, эмчилгээний талаарх мэдээлэл",
+      },
+      tabs: {
+        iron: "Төмөр",
+        zinc: "Цайр",
+        probiotics: "Пробиотик",
+        immunity: "Дархлаа",
+      },
+      resources: {
+        learnMore: "Дэлгэрэнгүй",
+      },
+      faq: {
+        title: "Түгээмэл асуултууд",
+      },
+    },
+    partners: {
+      hero: {
+        title: "Хамтрагч",
+        subtitle: "Хамтран ажиллах боломж",
+        cta: "Хамтрагч болох",
+      },
+      benefits: {
+        title: "Хамтралтын давуу тал",
+        items: {
+          support: {
+            title: "Дэмжлэг",
+            description: "Бүтээгдэхүүний сурталчилгаа, маркетингийн дэмжлэг",
+          },
+          training: {
+            title: "Сургалт",
+            description: "Бүтээгдэхүний талаарх мэргэжлийн сургалт",
+          },
+          quality: {
+            title: "Чанар",
+            description: "Олон улсын стандартын дагуу шалгагдсан бүтээгдэхүүн",
+          },
+        },
+      },
+      logos: {
+        title: "Манай хамтрагчид",
+      },
+      steps: {
+        title: "Хамтрагч болох алхам",
+        step1: {
+          title: "Холбоо барих",
+          description: "Бидэнтэй холбогдох",
+        },
+        step2: {
+          title: "Хэлэлцээр",
+          description: "Хамтралтын нөхцөлийг хэлэлцэх",
+        },
+        step3: {
+          title: "Гэрээ байгуулах",
+          description: "Албан ёсны гэрээ байгуулах",
+        },
+        step4: {
+          title: "Эхлэх",
+          description: "Хамтран ажиллах",
+        },
+      },
+      inquiry: {
+        title: "Хамтралтын хүсэлт",
+        name: "Нэр",
+        company: "Байгууллага",
+        email: "Имэйл",
+        phone: "Утас",
+        message: "Мессеж",
+        submit: "Илгээх",
+      },
+    },
+    productsPage: {
+      hero: {
+        title: "Бүтээгдэхүн",
+        subtitle: "Хүүхдэд зориулсан найдвартай бүтээгдэхүүн",
+      },
+      search: {
+        placeholder: "Бүтээгдэхүүн хайх...",
+        category: "Ангилал",
+        ageRange: "Насны хүрээ",
+        formFactor: "Хэлбэр",
+        allCategories: "Бүх ангилал",
+        allAges: "Бүх нас",
+        allForms: "Бүх хэлбэр",
+      },
+      empty: {
+        title: "Бүтээгдэхүүн олдсонгүй",
+        description: "Таны хайлтын үр дүнд тохирох бүтээгдэхүүн олдсонгүй",
+      },
+      pagination: {
+        previous: "Өмнөх",
+        next: "Дараах",
+      },
+    },
   },
   en: {
     nav: {
@@ -259,6 +456,203 @@ const translations = {
       terms: "Terms of Service",
       copyright: "© 2025 Achit Pharma LLC. All rights reserved.",
       disclaimer: "This website is for informational purposes only. Please consult a professional doctor for medical advice.",
+    },
+    about: {
+      hero: {
+        title: "About Us",
+        subtitle: "Our journey in supporting children's health",
+        cta: "View Products",
+      },
+      story: {
+        title: "Our Story",
+        content: "Achit Pharma LLC was founded with the mission to produce reliable, quality products that support children's health. We work closely with medical professionals to create products that are safe and beneficial for children.",
+      },
+      mission: {
+        title: "Our Mission",
+        values: {
+          quality: {
+            title: "Quality",
+            description: "Reliable products certified according to international standards",
+          },
+          care: {
+            title: "Care",
+            description: "Dedicated to protecting and supporting children's health",
+          },
+          innovation: {
+            title: "Innovation",
+            description: "Utilizing new technologies and research findings",
+          },
+          trust: {
+            title: "Trust",
+            description: "Transparent and trustworthy relationships with customers",
+          },
+        },
+      },
+      timeline: {
+        title: "Our Journey",
+        items: {
+          founded: {
+            year: "2020",
+            title: "Founded",
+            description: "Achit Pharma LLC was established",
+          },
+          firstProduct: {
+            year: "2021",
+            title: "First Product",
+            description: "Launched Adva-Iron product",
+          },
+          expansion: {
+            year: "2023",
+            title: "Expansion",
+            description: "Expanded product line",
+          },
+          partnership: {
+            year: "2024",
+            title: "Partnership",
+            description: "Established partnership with Papa Logistics",
+          },
+        },
+      },
+      team: {
+        title: "Our Team",
+        description: "Professional team with experienced specialists",
+      },
+      cta: {
+        title: "Join Us",
+        description: "Work with us to support children's health",
+        button: "Contact Us",
+      },
+    },
+    contact: {
+      title: "Contact Us",
+      subtitle: "Get in touch with us",
+      info: {
+        address: {
+          title: "Address",
+          value: "Ulaanbaatar, Mongolia",
+        },
+        phone: {
+          title: "Phone",
+          value: "+976 11 123456",
+        },
+        email: {
+          title: "Email",
+          value: "info@achitpharma.mn",
+        },
+        hours: {
+          title: "Working Hours",
+          value: "Monday - Friday, 08:30 - 17:30",
+        },
+      },
+      form: {
+        name: "Name",
+        phone: "Phone",
+        email: "Email",
+        subject: "Subject",
+        message: "Message",
+        submit: "Send",
+        success: "Message sent successfully",
+        error: "An error occurred",
+      },
+      map: {
+        title: "Location",
+      },
+    },
+    educationPage: {
+      hero: {
+        title: "Health Education",
+        subtitle: "Information about children's health, nutrition, and treatment",
+      },
+      tabs: {
+        iron: "Iron",
+        zinc: "Zinc",
+        probiotics: "Probiotics",
+        immunity: "Immunity",
+      },
+      resources: {
+        learnMore: "Learn More",
+      },
+      faq: {
+        title: "Frequently Asked Questions",
+      },
+    },
+    partners: {
+      hero: {
+        title: "Partners",
+        subtitle: "Partnership opportunities",
+        cta: "Become a Partner",
+      },
+      benefits: {
+        title: "Partnership Benefits",
+        items: {
+          support: {
+            title: "Support",
+            description: "Product promotion and marketing support",
+          },
+          training: {
+            title: "Training",
+            description: "Professional training on products",
+          },
+          quality: {
+            title: "Quality",
+            description: "Products certified according to international standards",
+          },
+        },
+      },
+      logos: {
+        title: "Our Partners",
+      },
+      steps: {
+        title: "Steps to Partner",
+        step1: {
+          title: "Contact Us",
+          description: "Get in touch with us",
+        },
+        step2: {
+          title: "Discussion",
+          description: "Discuss partnership terms",
+        },
+        step3: {
+          title: "Agreement",
+          description: "Sign official agreement",
+        },
+        step4: {
+          title: "Start",
+          description: "Begin working together",
+        },
+      },
+      inquiry: {
+        title: "Partnership Inquiry",
+        name: "Name",
+        company: "Company",
+        email: "Email",
+        phone: "Phone",
+        message: "Message",
+        submit: "Submit",
+      },
+    },
+    productsPage: {
+      hero: {
+        title: "Products",
+        subtitle: "Reliable products for children",
+      },
+      search: {
+        placeholder: "Search products...",
+        category: "Category",
+        ageRange: "Age Range",
+        formFactor: "Form",
+        allCategories: "All Categories",
+        allAges: "All Ages",
+        allForms: "All Forms",
+      },
+      empty: {
+        title: "No products found",
+        description: "No products match your search criteria",
+      },
+      pagination: {
+        previous: "Previous",
+        next: "Next",
+      },
     },
   },
 } as const;
