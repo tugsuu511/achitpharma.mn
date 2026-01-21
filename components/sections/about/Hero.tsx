@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { t } from "@/lib/i18n";
 import type { Locale } from "@/lib/locale-store";
 
@@ -16,11 +14,6 @@ export function AboutHero({ locale }: { locale: Locale }) {
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
             {t("about.hero.subtitle", locale)}
           </p>
-          <div className="pt-4">
-            <Button asChild size="lg">
-              <Link href="/products">{t("about.hero.cta", locale)}</Link>
-            </Button>
-          </div>
         </div>
       </div>
     </section>

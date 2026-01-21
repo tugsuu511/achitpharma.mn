@@ -3,7 +3,13 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { t } from "@/lib/i18n";
 import type { Locale } from "@/lib/locale-store";
-import { MapPin } from "lucide-react";
+
+const COORDS = { lat: 47.8979199, lng: 106.8836166 };
+
+const MAP_SRC = (locale: Locale) =>
+  `https://www.google.com/maps?q=${COORDS.lat},${COORDS.lng}&z=18&output=embed&hl=${
+    locale === "mn" ? "mn" : "en"
+  }`;
 
 export function MapPlaceholder({ locale }: { locale: Locale }) {
   return (
@@ -11,15 +17,27 @@ export function MapPlaceholder({ locale }: { locale: Locale }) {
       <CardHeader>
         <CardTitle>{t("contact.map.title", locale)}</CardTitle>
       </CardHeader>
+
       <CardContent>
-        <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-          <div className="text-center space-y-2">
-            <MapPin className="h-12 w-12 text-muted-foreground mx-auto" />
-            <p className="text-sm text-muted-foreground">
-              {locale === "mn" ? "Газрын зураг энд харагдана" : "Map will appear here"}
-            </p>
-          </div>
+        <div className="aspect-video overflow-hidden rounded-lg">
+          <iframe
+            title="Location Map"
+            src={MAP_SRC(locale)}
+            className="h-full w-full border-0"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          />
         </div>
+
+        <a
+          className="mt-3 inline-block text-sm underline text-muted-foreground"
+          href={`https://www.google.com/maps/search/?api=1&query=${COORDS.lat},${COORDS.lng}`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {locale === "mn" ? "Google Maps дээр нээх" : "Open in Google Maps"}
+        </a>
       </CardContent>
     </Card>
   );

@@ -16,9 +16,10 @@ const translations = {
     },
     hero: {
       headline: "Хүүхдийн эрүүл мэндийг дэмжих найдвартай бүтээгдэхүүн",
-      subheadline: "Ачит Алтан Ундарга ХХК-ийн хүүхдэд зориулсан OTC бүтээгдэхүүн",
-      ctaPrimary: "Бүтээгдэхүүн үзэх",
-      ctaSecondary: "Холбоо барих",
+      // subheadline: "Ачит Алтан Ундарга ХХК-ийн хүүхдэд зориулсан OTC бүтээгдэхүүн",
+      ctaPrimary_1: "Бүтээгдэхүүн үзэх",
+      ctaPrimary_2: "Дэлгэрэнгүй",
+      ctaPrimary_3: "Дэлгэрэнгүй",
     },
     trust: {
       delivery: {
@@ -42,7 +43,8 @@ const translations = {
       title: "Онцлох бүтээгдэхүүн",
       advaIron: {
         name: "Adva-Iron",
-        description: "Төмрийн дутлыг сэргээх, хүүхдийн эрүүл мэндэд дэмжлэг үзүүлэх",
+        description:
+          "Төмрийн дутлыг сэргээх, хүүхдийн эрүүл мэндэд дэмжлэг үзүүлэх",
         badge: "Төмөр",
       },
       advaBiotics: {
@@ -87,11 +89,13 @@ const translations = {
     testimonials: {
       title: "Хэрэглэгчдийн санал бодол",
       testimonial1: {
-        quote: "Манай хүүхэд Adva-Iron ууж эхлээд идэвх сайжирсан. Ихээхэн дэмжлэг болсон.",
+        quote:
+          "Манай хүүхэд Adva-Iron ууж эхлээд идэвх сайжирсан. Ихээхэн дэмжлэг болсон.",
         author: "Б. Энхтуяа",
       },
       testimonial2: {
-        quote: "Papa Logistics-ын хүргэлт маш хурдан. Захиалга өгсний дараа шөнийн дотор хүргэгдлээ.",
+        quote:
+          "Papa Logistics-ын хүргэлт маш хурдан. Захиалга өгсний дараа шөнийн дотор хүргэгдлээ.",
         author: "Ц. Гэрэлмаа",
       },
       testimonial3: {
@@ -117,7 +121,8 @@ const translations = {
       button: "Холбоо барих",
     },
     footer: {
-      mission: "Хүүхдийн эрүүл мэндэд найдвартай, чанартай бүтээгдэхүүн үйлдвэрлэх нь бидний эрхэм зорилго.",
+      mission:
+        "Хүүхдийн эрүүл мэндэд найдвартай, чанартай бүтээгдэхүүн үйлдвэрлэх нь бидний эрхэм зорилго.",
       company: "Ачит Алтан Ундарга ХХК",
       workingHours: "Ажлын цаг: Даваа - Баасан, 08:30 - 17:30",
       phone: "Утас",
@@ -127,8 +132,10 @@ const translations = {
       contact: "Холбоо барих",
       privacy: "Нууцлалын бодлого",
       terms: "Үйлчилгээний нөхцөл",
-      copyright: "© 2025 Ачит Алтан Ундарга ХХК. Бүх эрх хуулиар хамгаалагдсан.",
-      disclaimer: "Энэ сайт нь мэдээллийн зорилготой. Эмчилгээний зөвлөгөөг мэргэжлийн эмчээс аваарай.",
+      copyright:
+        "© 2025 Ачит Алтан Ундарга ХХК. Бүх эрх хуулиар хамгаалагдсан.",
+      disclaimer:
+        "Энэ сайт нь мэдээллийн зорилготой. Эмчилгээний зөвлөгөөг мэргэжлийн эмчээс аваарай.",
     },
     about: {
       hero: {
@@ -138,14 +145,16 @@ const translations = {
       },
       story: {
         title: "Манай түүх",
-        content: "Ачит Алтан Ундарга ХХК нь хүүхдийн эрүүл мэндийг дэмжихэд зориулсан найдвартай, чанартай бүтээгдэхүүн үйлдвэрлэх зорилготойгоор байгуулагдсан. Бид эмнэлгийн мэргэжилтнүүдтэй хамтран ажиллаж, хүүхдүүдийн эрүүл мэндэд ээлтэй бүтээгдэхүүнийг бүтээж байна.",
+        content:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in sodales sem, a porttitor turpis. Etiam id egestas neque, a venenatis dui. Aliquam vestibulum semper augue, in maximus odio finibus nec. Sed eu justo eget libero interdum ullamcorper. Suspendisse condimentum imperdiet velit, sit amet rhoncus mi mollis vitae. Vivamus ullamcorper, nibh ac semper convallis, justo sem pharetra erat, in semper metus odio ac ex. Morbi feugiat suscipit sapien, vitae viverra mauris suscipit eget.",
       },
       mission: {
         title: "Эрхэм зорилго",
         values: {
           quality: {
             title: "Чанар",
-            description: "Олон улсын стандартын дагуу шалгагдсан, найдвартай бүтээгдэхүүн",
+            description:
+              "Олон улсын стандартын дагуу шалгагдсан, найдвартай бүтээгдэхүүн",
           },
           care: {
             title: "Анхаарал",
@@ -165,24 +174,24 @@ const translations = {
         title: "Манай замнал",
         items: {
           founded: {
-            year: "2020",
+            year: "2023",
             title: "Байгуулагдсан",
             description: "Ачит Алтан Ундарга ХХК байгуулагдсан",
           },
           firstProduct: {
-            year: "2021",
+            year: "2024",
             title: "Эхний бүтээгдэхүүн",
-            description: "Adva-Iron бүтээгдэхүүн гаргасан",
+            description: "Adva-Biotics бүтээгдэхүүн гаргасан",
           },
           expansion: {
-            year: "2023",
+            year: "2024",
             title: "Өргөтгөл",
             description: "Бүтээгдэхүүний цувралыг өргөжүүлсэн",
           },
           partnership: {
             year: "2024",
             title: "Хамтрал",
-            description: "Papa Logistics-тай хамтран ажиллах гэрээ байгуулсан",
+            description: "x хамтран ажиллах гэрээ байгуулсан",
           },
         },
       },
@@ -192,7 +201,8 @@ const translations = {
       },
       cta: {
         title: "Бидэнтэй нэгдээрэй",
-        description: "Хүүхдийн эрүүл мэндийг дэмжихэд бидэнтэй хамтран ажиллаарай",
+        description:
+          "Хүүхдийн эрүүл мэндийг дэмжихэд бидэнтэй хамтран ажиллаарай",
         button: "Холбоо барих",
       },
     },
@@ -206,7 +216,7 @@ const translations = {
         },
         phone: {
           title: "Утас",
-          value: "+976 11 123456",
+          value: "9192-9698 , 7707-9698",
         },
         email: {
           title: "Имэйл",
@@ -216,16 +226,6 @@ const translations = {
           title: "Ажлын цаг",
           value: "Даваа - Баасан, 08:30 - 17:30",
         },
-      },
-      form: {
-        name: "Нэр",
-        phone: "Утас",
-        email: "Имэйл",
-        subject: "Гарчиг",
-        message: "Мессеж",
-        submit: "Илгээх",
-        success: "Амжилттай илгээгдлээ",
-        error: "Алдаа гарлаа",
       },
       map: {
         title: "Байршил",
@@ -255,53 +255,8 @@ const translations = {
         subtitle: "Хамтран ажиллах боломж",
         cta: "Хамтрагч болох",
       },
-      benefits: {
-        title: "Хамтралтын давуу тал",
-        items: {
-          support: {
-            title: "Дэмжлэг",
-            description: "Бүтээгдэхүүний сурталчилгаа, маркетингийн дэмжлэг",
-          },
-          training: {
-            title: "Сургалт",
-            description: "Бүтээгдэхүний талаарх мэргэжлийн сургалт",
-          },
-          quality: {
-            title: "Чанар",
-            description: "Олон улсын стандартын дагуу шалгагдсан бүтээгдэхүүн",
-          },
-        },
-      },
       logos: {
         title: "Манай хамтрагчид",
-      },
-      steps: {
-        title: "Хамтрагч болох алхам",
-        step1: {
-          title: "Холбоо барих",
-          description: "Бидэнтэй холбогдох",
-        },
-        step2: {
-          title: "Хэлэлцээр",
-          description: "Хамтралтын нөхцөлийг хэлэлцэх",
-        },
-        step3: {
-          title: "Гэрээ байгуулах",
-          description: "Албан ёсны гэрээ байгуулах",
-        },
-        step4: {
-          title: "Эхлэх",
-          description: "Хамтран ажиллах",
-        },
-      },
-      inquiry: {
-        title: "Хамтралтын хүсэлт",
-        name: "Нэр",
-        company: "Байгууллага",
-        email: "Имэйл",
-        phone: "Утас",
-        message: "Мессеж",
-        submit: "Илгээх",
       },
     },
     productsPage: {
@@ -343,18 +298,21 @@ const translations = {
     },
     hero: {
       headline: "Trusted Products for Children's Health",
-      subheadline: "Pediatric OTC products from Achit Pharma LLC",
-      ctaPrimary: "View Products",
-      ctaSecondary: "Contact",
+      // subheadline: "Pediatric OTC products from Achit Pharma LLC",
+      ctaPrimary_1: "View Products",
+      ctaPrimary_2: "See More",
+      ctaPrimary_3: "See More",
     },
     trust: {
       delivery: {
         title: "Same-Day Delivery",
-        description: "Partnered with Papa Logistics for same-day delivery service",
+        description:
+          "Partnered with Papa Logistics for same-day delivery service",
       },
       formula: {
         title: "Child-Friendly Formula",
-        description: "Safe and reliable formulas designed for children's health",
+        description:
+          "Safe and reliable formulas designed for children's health",
       },
       quality: {
         title: "Quality Standards",
@@ -414,11 +372,13 @@ const translations = {
     testimonials: {
       title: "Customer Reviews",
       testimonial1: {
-        quote: "Since my child started taking Adva-Iron, they've become more active. It's been very helpful.",
+        quote:
+          "Since my child started taking Adva-Iron, they've become more active. It's been very helpful.",
         author: "B. Enkhtuya",
       },
       testimonial2: {
-        quote: "Papa Logistics delivery is very fast. We received our order within the same day.",
+        quote:
+          "Papa Logistics delivery is very fast. We received our order within the same day.",
         author: "Ts. Gerelmaa",
       },
       testimonial3: {
@@ -444,7 +404,8 @@ const translations = {
       button: "Contact Us",
     },
     footer: {
-      mission: "Our mission is to produce reliable, quality products for children's health.",
+      mission:
+        "Our mission is to produce reliable, quality products for children's health.",
       company: "Achit Pharma LLC",
       workingHours: "Working Hours: Monday - Friday, 08:30 - 17:30",
       phone: "Phone",
@@ -455,7 +416,8 @@ const translations = {
       privacy: "Privacy Policy",
       terms: "Terms of Service",
       copyright: "© 2025 Achit Pharma LLC. All rights reserved.",
-      disclaimer: "This website is for informational purposes only. Please consult a professional doctor for medical advice.",
+      disclaimer:
+        "This website is for informational purposes only. Please consult a professional doctor for medical advice.",
     },
     about: {
       hero: {
@@ -465,18 +427,21 @@ const translations = {
       },
       story: {
         title: "Our Story",
-        content: "Achit Pharma LLC was founded with the mission to produce reliable, quality products that support children's health. We work closely with medical professionals to create products that are safe and beneficial for children.",
+        content:
+          "Achit Pharma LLC was founded with the mission to produce reliable, quality products that support children's health. We work closely with medical professionals to create products that are safe and beneficial for children.",
       },
       mission: {
         title: "Our Mission",
         values: {
           quality: {
             title: "Quality",
-            description: "Reliable products certified according to international standards",
+            description:
+              "Reliable products certified according to international standards",
           },
           care: {
             title: "Care",
-            description: "Dedicated to protecting and supporting children's health",
+            description:
+              "Dedicated to protecting and supporting children's health",
           },
           innovation: {
             title: "Innovation",
@@ -484,7 +449,8 @@ const translations = {
           },
           trust: {
             title: "Trust",
-            description: "Transparent and trustworthy relationships with customers",
+            description:
+              "Transparent and trustworthy relationships with customers",
           },
         },
       },
@@ -492,24 +458,24 @@ const translations = {
         title: "Our Journey",
         items: {
           founded: {
-            year: "2020",
+            year: "2023",
             title: "Founded",
             description: "Achit Pharma LLC was established",
           },
           firstProduct: {
-            year: "2021",
+            year: "2024",
             title: "First Product",
-            description: "Launched Adva-Iron product",
+            description: "Launched Adva-Biotics product",
           },
           expansion: {
-            year: "2023",
+            year: "2024",
             title: "Expansion",
             description: "Expanded product line",
           },
           partnership: {
             year: "2024",
             title: "Partnership",
-            description: "Established partnership with Papa Logistics",
+            description: "Established partnership with x",
           },
         },
       },
@@ -533,7 +499,7 @@ const translations = {
         },
         phone: {
           title: "Phone",
-          value: "+976 11 123456",
+          value: "9192-9698 , 7707-9698",
         },
         email: {
           title: "Email",
@@ -561,7 +527,8 @@ const translations = {
     educationPage: {
       hero: {
         title: "Health Education",
-        subtitle: "Information about children's health, nutrition, and treatment",
+        subtitle:
+          "Information about children's health, nutrition, and treatment",
       },
       tabs: {
         iron: "Iron",
@@ -582,53 +549,8 @@ const translations = {
         subtitle: "Partnership opportunities",
         cta: "Become a Partner",
       },
-      benefits: {
-        title: "Partnership Benefits",
-        items: {
-          support: {
-            title: "Support",
-            description: "Product promotion and marketing support",
-          },
-          training: {
-            title: "Training",
-            description: "Professional training on products",
-          },
-          quality: {
-            title: "Quality",
-            description: "Products certified according to international standards",
-          },
-        },
-      },
       logos: {
         title: "Our Partners",
-      },
-      steps: {
-        title: "Steps to Partner",
-        step1: {
-          title: "Contact Us",
-          description: "Get in touch with us",
-        },
-        step2: {
-          title: "Discussion",
-          description: "Discuss partnership terms",
-        },
-        step3: {
-          title: "Agreement",
-          description: "Sign official agreement",
-        },
-        step4: {
-          title: "Start",
-          description: "Begin working together",
-        },
-      },
-      inquiry: {
-        title: "Partnership Inquiry",
-        name: "Name",
-        company: "Company",
-        email: "Email",
-        phone: "Phone",
-        message: "Message",
-        submit: "Submit",
       },
     },
     productsPage: {
@@ -675,7 +597,6 @@ export function setLocale(locale: Locale) {
   localStorage.setItem(STORAGE_KEY, locale);
   window.dispatchEvent(new Event("localechange"));
 }
-
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;

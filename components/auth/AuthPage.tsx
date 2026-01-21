@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
+import { useMemo } from "react";
 import { AuthForm } from "./AuthForm";
 
 export type Mode = "login" | "signup";
@@ -13,7 +14,7 @@ export function AuthPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const mode = parseMode(searchParams.get("mode"));
+  const mode = useMemo(() => parseMode(searchParams.get("mode")), [searchParams]);
 
   const setMode = (m: Mode) => {
     router.replace(`/auth?mode=${m}`);
@@ -21,7 +22,7 @@ export function AuthPage() {
 
   return (
     <div className="max-w-[420px] mx-auto mt-10 px-4">
-      <h1 className="text-2xl font-semibold">
+      <h1 className="text-2xl font-semibold mb-4">
         {mode === "login" ? "Нэвтрэх" : "Бүртгүүлэх"}
       </h1>
 

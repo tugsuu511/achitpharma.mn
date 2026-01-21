@@ -5,7 +5,6 @@ import { useLocale } from "@/lib/locale-store";
 import { HeroSection } from "@/components/home/HeroSection";
 import { TrustSection } from "@/components/home/TrustSection";
 import { ProductsSection } from "@/components/home/ProductsSection";
-import { HowItWorksSection } from "@/components/home/HowItWorksSection";
 import { EducationSection } from "@/components/home/EducationSection";
 import { FAQSection } from "@/components/home/FAQSection";
 import { CtaSection } from "@/components/home/CtaSection";
@@ -18,7 +17,6 @@ export default function Home() {
       <HeroSection locale={locale} />
       <TrustSection locale={locale} />
       <ProductsSection locale={locale} />
-      <HowItWorksSection locale={locale} />
       <EducationSection locale={locale} />
       <FAQSection locale={locale} />
       <CtaSection locale={locale} />
