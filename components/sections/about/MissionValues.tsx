@@ -1,7 +1,6 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { t } from "@/lib/i18n";
 import type { Locale } from "@/lib/locale-store";
 import { Award, Heart, Lightbulb, Shield } from "lucide-react";

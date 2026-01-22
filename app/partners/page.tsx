@@ -1,7 +1,6 @@
 "use client";
 
 import { useLocale } from "@/lib/locale-store";
-import { PartnersHero } from "@/components/sections/partners/PartnersHero";
 import { PartnerLogos } from "@/components/sections/partners/PartnerLogos";
 
 export default function PartnersPage() {

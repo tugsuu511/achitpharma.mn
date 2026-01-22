@@ -123,3 +123,66 @@
     @apply bg-background text-foreground;
   }
 }
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes glowMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+.footer-glow {
+  height: 8px;                 
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(99,102,241,.55),
+    rgba(168,85,247,.55),
+    rgba(34,211,238,.55),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: glowMove 6s ease-in-out infinite;
+  filter: blur(6px);          
+  opacity: .9;
+}
+
+/* Marquee 2 directions */
+@keyframes marqueeLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marqueeRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.footer-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 28px;
+  will-change: transform;
+}
+
+.footer-marquee-left {
+  animation: marqueeLeft 18s linear infinite;
+}
+.footer-marquee-right {
+  animation: marqueeRight 18s linear infinite;
+}
+
+.footer-marquee-left:hover,
+.footer-marquee-right:hover {
+  animation-play-state: paused;
+}
+
+/* Optional: edge fade mask */
+.footer-marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
