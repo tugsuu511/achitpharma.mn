@@ -15,6 +15,8 @@ import { useLocale } from "@/lib/locale-store";
 import { useHeaderBehavior } from "./header/useHeaderBehavior";
 import { NavLinks, type NavItem } from "./header/NavLinks";
 import { MobileMenu } from "./header/MobileMenu";
+import DarkMode from "./header/DarkMode";
+
 
 export function SiteHeader() {
   const locale = useLocale();
@@ -147,6 +149,8 @@ export function SiteHeader() {
                 <Button asChild size="sm" className="hidden md:inline-flex" onClick={closeAll}>
                   <Link href="/products">{t("header.order", locale)}</Link>
                 </Button>
+
+                <DarkMode/>
 
                 <MobileMenu
                   open={sheetOpen}
