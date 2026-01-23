@@ -45,39 +45,24 @@ const translations = {
         name: "Adva-Iron",
         description:
           "Төмрийн дутлыг сэргээх, хүүхдийн эрүүл мэндэд дэмжлэг үзүүлэх",
-        badge: "Төмөр",
+        badge: "Төмрийн бэлдмэл",
       },
       advaBiotics: {
-        name: "Adva-Biotics (Zinc)",
+        name: "Adva-Biotics",
         description: "Ашигтай бактери, цайртай хослуулсан найрлага",
-        badge: "Пробиотик + Цайр",
+        badge: "Пробиотик + 10мг Цайр",
       },
       aclavcare: {
         name: "Aclavcare",
         description: "Хүүхдийн эрүүл мэндэд туслах бүтээгдэхүүн",
-        badge: "Эрүүл мэнд",
+        badge: "Антибиотик",
       },
       mozincare: {
         name: "Mozincare",
         description: "Хүүхдийн эрүүл мэндийг дэмжих тусгай найрлага",
-        badge: "Эрүүл мэнд",
+        badge: "Сироп",
       },
       learnMore: "Дэлгэрэнгүй",
-    },
-    howItWorks: {
-      title: "Хэрхэн ажилладаг",
-      step1: {
-        title: "Бүтээгдэхүүн сонгох",
-        description: "Хүүхдийн хэрэгцээнд тохирсон бүтээгдэхүүнийг сонгоно",
-      },
-      step2: {
-        title: "Захиалах",
-        description: "Хялбар захиалгын системээр захиална",
-      },
-      step3: {
-        title: "Өдөртөө хүргэлт",
-        description: "Papa Logistics-оор өдөртөө хүргэлт авна",
-      },
     },
     education: {
       title: "Эрүүл мэндийн мэдээлэл",
@@ -105,8 +90,6 @@ const translations = {
     },
     faq: {
       title: "Түгээмэл асуултууд",
-      q1: "Хүргэлт хэр удаан үргэлжилдэг вэ?",
-      a1: "Papa Logistics-оор захиалга өгсний дараа өдөртөө хүргэлт боломжтой. Хот доторх бүх бүсэд хүргэлт үйлчилгээ үзүүлдэг.",
       q2: "Бүтээгдэхүүнийг хэрхэн хадгалах вэ?",
       a2: "Бүх бүтээгдэхүүнийг сайтын зааврын дагуу хэвийн өрөөний температурт, хэт халуун, хүйтэнд орохгүй газар хадгална. Хүүхдийн хүрээллэхгүй газар байршуулна.",
       q3: "Хэдэн настай хүүхэд ашиглаж болох вэ?",
@@ -117,7 +100,7 @@ const translations = {
       a5: "Манай вэбсайтаас захиалга өгч, Papa Logistics-оор хүргүүлэх боломжтой. Мөн ойролцоох эмийн сангуудад байж болно.",
     },
     cta: {
-      title: "Хүүхдийн эрүүл мэндийг дэмжихэд бидэнтэй нэгдээрэй",
+      title: "lorem ipsum",
       button: "Холбоо барих",
     },
     footer: {
@@ -328,10 +311,10 @@ const translations = {
       advaIron: {
         name: "Adva-Iron",
         description: "Supports iron deficiency recovery and children's health",
-        badge: "Iron",
+        badge: "Iron jelly",
       },
       advaBiotics: {
-        name: "Adva-Biotics (Zinc)",
+        name: "Adva-Biotics",
         description: "Beneficial bacteria combined with zinc formula",
         badge: "Probiotic + Zinc",
       },
@@ -388,8 +371,6 @@ const translations = {
     },
     faq: {
       title: "Frequently Asked Questions",
-      q1: "How long does delivery take?",
-      a1: "With Papa Logistics, same-day delivery is available after placing an order. Delivery service covers all areas within the city.",
       q2: "How to store the products?",
       a2: "All products should be stored according to package instructions at normal room temperature, away from extreme heat or cold. Keep out of reach of children.",
       q3: "What age can children use these products?",
