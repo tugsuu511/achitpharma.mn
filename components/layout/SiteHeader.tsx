@@ -36,11 +36,17 @@ export function SiteHeader() {
   const navLinks = useMemo<NavItem[]>(
     () => [
       { href: "/", key: "nav.home" },
-      { href: "/about", key: "nav.about" },
+      {
+        href: "/about",
+        key: "nav.about",
+        children: [
+          { href: "/contact", key: "nav.contact" },
+          { href: "/about/history", key: "nav.history" },
+          { href: "/partners", key: "nav.partners" },
+        ],
+      },
       { href: "/products", key: "nav.products" },
       { href: "/education", key: "nav.education" },
-      { href: "/partners", key: "nav.partners" },
-      { href: "/contact", key: "nav.contact" },
     ],
     []
   );
@@ -56,7 +62,8 @@ export function SiteHeader() {
       >
         <div
           className={cn(
-            "mx-auto overflow-hidden border shadow-sm",
+            // ✅ dropdown таслагдахгүй
+            "mx-auto overflow-visible border shadow-sm",
             "bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60",
             "transition-[width,max-width,border-radius,background-color,box-shadow] duration-500 ease-in-out",
             isCollapsed ? "rounded-full" : "rounded-2xl"
@@ -92,8 +99,8 @@ export function SiteHeader() {
                 isCollapsed ? "mx-auto" : "mr-6"
               )}
               onClick={(e) => {
-                if (!scrolled) return; // top үед хэвийн navigate
-                e.preventDefault(); // scroll үед navigate хийхгүй
+                if (!scrolled) return;
+                e.preventDefault();
                 setExpanded((v) => !v);
               }}
             >
@@ -113,10 +120,12 @@ export function SiteHeader() {
               />
             </Link>
 
-            {/* Content хэсэг (collapsed үед smooth collapse) */}
+            {/* Content */}
             <div
               className={cn(
-                "flex items-center justify-between overflow-hidden",
+                "flex items-center justify-between",
+                // ✅ collapsed үед л clip хийнэ, бусад үед dropdown гаргана
+                isCollapsed ? "overflow-hidden" : "overflow-visible",
                 "transition-[width,max-width,opacity,transform] duration-500 ease-in-out",
                 isCollapsed
                   ? "w-0 max-w-0 opacity-0 -translate-y-1 scale-95 pointer-events-none"
@@ -152,7 +161,6 @@ export function SiteHeader() {
           </div>
         </div>
 
-        {/* Expanded үед гадуур дарвал хаах (optional) */}
         {expanded && scrolled && (
           <button
             aria-label="Close expanded header"
