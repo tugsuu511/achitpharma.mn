@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/SiteHeader";
@@ -13,11 +12,6 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
-export const metadata: Metadata = {
-  title: "Achit Pharma - Хүүхдийн эрүүл мэндийн бүтээгдэхүүн",
-  description: "Ачит Алтан Ундарга ХХК-ийн хүүхдэд зориулсан OTC бүтээгдэхүүн",
-};
 
 export default function RootLayout({
   children,
