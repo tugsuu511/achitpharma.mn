@@ -9,12 +9,12 @@ import { t } from "@/lib/i18n";
 import { ProductDetailBackground } from "@/components/sections/product-detail/ProductDetailBackground";
 import { ProductImagePane } from "@/components/sections/product-detail/ProductImagePane";
 import { ProductInfoPane } from "@/components/sections/product-detail/ProductInfoPane";
-import { ProductDetail } from "@/components/sections/product-detail/types";
-import { PRODUCT_IMAGES } from "@/components/sections/product-detail/assets";
+import { ProductDetail, Product } from "@/types";
+import { PRODUCT_IMAGES } from "@/data/product-assets";
 
 
 // --- Mock Data ---
-const PRODUCTS_DB: Record<string, ProductDetail> = {
+const PRODUCTS_DB: Record<string, Partial<Product>> = {
   "adva-iron": {
     id: "adva-iron",
     price: "45,000₮",
@@ -50,9 +50,9 @@ export default function ProductDetailPage() {
   }
 
   // 2. Safe i18n Helpers
-  const getName = () => t(`products.${product.id}.name`, locale) || product.id;
-  const getDescription = () => t(`products.${product.id}.description`, locale) || "Product description unavailable.";
-  const getBadge = () => t(`products.${product.id}.badge`, locale) || "Premium";
+  const getName = () => t(`products.${product.id}.name`, locale) || product.id || "Unknown";
+  const getDescription = () => (product.id ? t(`products.${product.id}.description`, locale) : "") || "Product description unavailable.";
+  const getBadge = () => (product.id ? t(`products.${product.id}.badge`, locale) : "") || "Premium";
   
   const getBenefits = () => [
     "Supports daily immunity",
@@ -67,10 +67,14 @@ export default function ProductDetailPage() {
 
       {/* Main Container */}
       <div className="relative z-10 flex min-h-screen flex-col md:flex-row">
-        <ProductImagePane product={product} name={getName()} />
+        {/* Helper cast: Components expect Product but we only have Partial here. 
+            In a real app, we'd merge with full data or update component types. 
+            For now, as components only use a few fields, we can cast or update components. 
+            Updating components to Partial is safer. */}
+        <ProductImagePane product={product as Product} name={getName()} />
         
         <ProductInfoPane 
-          product={product} 
+          product={product as Product} 
           name={getName()} 
           description={getDescription()} 
           badge={getBadge()} 

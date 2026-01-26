@@ -4,7 +4,7 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { ProductDetail } from "./types";
+import { ProductDetail } from "@/types";
 
 interface ProductImagePaneProps {
   product: ProductDetail;
@@ -29,7 +29,7 @@ export function ProductImagePane({ product, name }: ProductImagePaneProps) {
 
         <div className="relative h-full w-full">
           <Image
-            src={product.imageSrc}
+            src={product.imageSrc || ""}
             alt={name}
             fill
             className="object-contain object-center md:object-left" // Center on mobile, Left on desktop

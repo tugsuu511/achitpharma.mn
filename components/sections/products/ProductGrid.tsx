@@ -4,21 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { t } from "@/lib/i18n";
 import type { Locale } from "@/lib/locale-store";
-
-export type Product = {
-  id: string;
-  name: string;
-  description: string;
-  badge: string;
-  color: string;
-  category: string;
-  ageRange: string;
-  formFactor: string;
-
-  // ✅ optional зураг (aclacare/mozincare дээр байхгүй байж болно)
-  imageSrc?: string;
-  imageAlt?: string;
-};
+import type { Product } from "@/types";
 
 export function ProductGrid({
   locale,

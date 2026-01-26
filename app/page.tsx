@@ -2,12 +2,12 @@
 
 import { useLocale } from "@/lib/locale-store";
 
-import { HeroSection } from "@/components/home/HeroSection";
-import { TrustSection } from "@/components/home/TrustSection";
-import { ProductsSection } from "@/components/home/ProductsSection";
-import { EducationSection } from "@/components/home/EducationSection";
-import { FAQSection } from "@/components/home/FAQSection";
-import { CtaSection } from "@/components/home/CtaSection";
+import { HeroSection } from "@/components/sections/home/HeroSection";
+import { TrustSection } from "@/components/sections/home/TrustSection";
+import { ProductsSection } from "@/components/sections/home/ProductsSection";
+import { EducationSection } from "@/components/sections/home/EducationSection";
+import { FAQSection } from "@/components/sections/home/FAQSection";
+import { CtaSection } from "@/components/sections/home/CtaSection";
 
 export default function Home() {
   const locale = useLocale();
