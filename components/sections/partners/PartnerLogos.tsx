@@ -3,7 +3,6 @@
 import * as React from "react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
-import { MapPin } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -22,6 +21,9 @@ type Partner = {
 const MAP_LIGHT = "/brand/world-map-light.jpg";
 const MAP_DARK = "/brand/world-map-dark.jpg";
 
+// ✅ footprint icon (public дотор байх ёстой)
+const FOOTPRINT_SRC = "/brand/footprint.png";
+
 export function PartnerLogos({ locale }: { locale: Locale }) {
   const { resolvedTheme } = useTheme();
 
@@ -31,7 +33,7 @@ export function PartnerLogos({ locale }: { locale: Locale }) {
 
   const partners: Partner[] = React.useMemo(
     () => [
-      {
+     {
         id: "us",
         name: "Advacare (USA)",
         logoSrc: "/brand/logo.png",
@@ -64,7 +66,7 @@ export function PartnerLogos({ locale }: { locale: Locale }) {
         location: "Asia",
       },
     ],
-    [],
+    []
   );
 
   const [activeId, setActiveId] = React.useState<string | null>(null);
@@ -103,8 +105,8 @@ export function PartnerLogos({ locale }: { locale: Locale }) {
                 <button
                   type="button"
                   aria-label={p.name}
-                  // ✅ tip-ээр anchor хийх (x,y нь pin-ийн доод үзүүр болно)
-                  className="group relative -translate-x-1/2 -translate-y-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2"
+                  // ✅ footprint-д center anchor ихэнхдээ гоё: -translate-y-1/2
+                  className="group relative -translate-x-1/2 -translate-y-1/2 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2"
                   onMouseEnter={() => setActiveId(p.id)}
                   onMouseLeave={() =>
                     setActiveId((cur) => (cur === p.id ? null : cur))
@@ -117,19 +119,17 @@ export function PartnerLogos({ locale }: { locale: Locale }) {
                     setActiveId((cur) => (cur === p.id ? null : p.id))
                   }
                 >
-                  {/* ✅ Bright red location pin + 2x hover */}
-                  <span className="relative block">
+                  {/* ✅ Footprint icon + 2x hover */}
+                  <span className="relative block h-9 w-9 transition-transform duration-200 ease-out group-hover:scale-200">
                     {/* glow halo */}
-                    <span className="pointer-events-none absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-500/15 blur-md opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+                    <span className="pointer-events-none absolute left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-500/15 blur-md opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
 
-                    <MapPin
-                      className={[
-                        "h-7 w-7",
-                        "text-red-600 fill-red-600",
-                        "drop-shadow-[0_6px_10px_rgba(0,0,0,0.25)]",
-                        "transition-transform duration-200 ease-out",
-                        "group-hover:scale-200",
-                      ].join(" ")}
+                    <Image
+                      src={FOOTPRINT_SRC}
+                      alt="footprint icon"
+                      fill
+                      className="object-contain drop-shadow-[0_6px_10px_rgba(0,0,0,0.25)]"
+                      unoptimized
                     />
                   </span>
                 </button>
