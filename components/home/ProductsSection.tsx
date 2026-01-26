@@ -11,24 +11,28 @@ import type { Locale } from "@/lib/locale-store";
 export function ProductsSection({ locale }: { locale: Locale }) {
   const products = [
     {
+      id: "adva-iron",
       name: t("products.advaIron.name", locale),
       description: t("products.advaIron.description", locale),
       badge: t("products.advaIron.badge", locale),
       color: "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
     },
     {
+      id: "adva-biotics",
       name: t("products.advaBiotics.name", locale),
       description: t("products.advaBiotics.description", locale),
       badge: t("products.advaBiotics.badge", locale),
       color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
     },
     {
+      id: "aclavcare",
       name: t("products.aclavcare.name", locale),
       description: t("products.aclavcare.description", locale),
       badge: t("products.aclavcare.badge", locale),
       color: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
     },
     {
+      id: "mozincare",
       name: t("products.mozincare.name", locale),
       description: t("products.mozincare.description", locale),
       badge: t("products.mozincare.badge", locale),
@@ -67,7 +71,7 @@ export function ProductsSection({ locale }: { locale: Locale }) {
 
               <CardFooter>
                 <Button asChild variant="outline" className="w-full">
-                  <Link href="/products">{t("products.learnMore", locale)}</Link>
+                  <Link href={`/products/${product.id}`}>{t("products.learnMore", locale)}</Link>
                 </Button>
               </CardFooter>
             </Card>
