@@ -7,7 +7,7 @@ import { ShoppingCart, MessageCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
-import { ProductDetail } from "./types";
+import { ProductDetail } from "@/types";
 import { ProductTabs } from "./ProductTabs";
 
 interface ProductInfoPaneProps {
