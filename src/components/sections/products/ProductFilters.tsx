@@ -53,6 +53,7 @@ export function ProductFilters({
           <SelectItem value="iron">{t("products.advaIron.badge", locale)}</SelectItem>
           <SelectItem value="probiotic">{t("products.advaBiotics.badge", locale)}</SelectItem>
           <SelectItem value="health">{t("products.aclavcare.badge", locale)}</SelectItem>
+          <SelectItem value="antiemetic">{locale === "mn" ? "Бөөлжилтийн эсрэг" : "Antiemetic"}</SelectItem>
         </SelectContent>
       </Select>
       <Select value={ageRange} onValueChange={onAgeRangeChange}>
@@ -64,6 +65,8 @@ export function ProductFilters({
           <SelectItem value="0-2">0-2 {locale === "mn" ? "нас" : "years"}</SelectItem>
           <SelectItem value="3-5">3-5 {locale === "mn" ? "нас" : "years"}</SelectItem>
           <SelectItem value="6-12">6-12 {locale === "mn" ? "нас" : "years"}</SelectItem>
+          <SelectItem value="child">{locale === "mn" ? "Хүүхэд" : "Child"}</SelectItem>
+          <SelectItem value="adult">{locale === "mn" ? "Насанд хүрэгч" : "Adult"}</SelectItem>
         </SelectContent>
       </Select>
       <Select value={formFactor} onValueChange={onFormFactorChange}>
@@ -75,6 +78,7 @@ export function ProductFilters({
           <SelectItem value="syrup">{locale === "mn" ? "Сироп" : "Syrup"}</SelectItem>
           <SelectItem value="tablet">{locale === "mn" ? "Хүүсэл" : "Tablet"}</SelectItem>
           <SelectItem value="drops">{locale === "mn" ? "Дусл" : "Drops"}</SelectItem>
+          <SelectItem value="odf">ODF</SelectItem>
         </SelectContent>
       </Select>
     </div>

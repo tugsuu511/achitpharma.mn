@@ -63,6 +63,18 @@
           description: "Хүүхдийн эрүүл мэндийг дэмжих тусгай найрлага",
           badge: "Сироп",
         },
+        ondalenz4: {
+          name: "Ondalenz 4mg",
+          description:
+            "Хүүхдийн тунтай, бөөлжилт ба дотор муухайралтын эсрэг ODF хэлбэр",
+          badge: "ODF • Хүүхдийн тун",
+        },
+        ondalenz8: {
+          name: "Ondalenz 8mg",
+          description:
+            "Насанд хүрэгчдийн тунтай, бөөлжилт ба дотор муухайралтын эсрэг ODF хэлбэр",
+          badge: "ODF • Насанд хүрэгчдийн тун",
+        },
         learnMore: "Дэлгэрэнгүй",
       },
       education: {
@@ -329,6 +341,18 @@
           name: "Mozincare",
           description: "Special formula for children's health support",
           badge: "Health",
+        },
+        ondalenz4: {
+          name: "Ondalenz 4mg",
+          description:
+            "Child dose ODF for nausea and vomiting; place on the tongue to dissolve",
+          badge: "ODF • Child dose",
+        },
+        ondalenz8: {
+          name: "Ondalenz 8mg",
+          description:
+            "Adult dose ODF for nausea and vomiting; place on the tongue to dissolve",
+          badge: "ODF • Adult dose",
         },
         learnMore: "Learn More",
       },
