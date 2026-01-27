@@ -5,7 +5,12 @@ import { Check, AlertCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
 
 const fadeIn = {
   initial: { opacity: 0, y: 10 },
@@ -62,15 +67,19 @@ export function ProductTabs({ benefits }: ProductTabsProps) {
                 Who is it for?
               </h4>
               <p className="text-indigo-800/80 leading-relaxed font-medium">
-                Perfect for children aged 4-12 who need an extra boost of
-                immunity and daily vitamins. Scientifically formulated for fussy
-                eaters to ensure they get the nutrients they need to thrive.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+                neque ante, convallis ut tristique vel, pulvinar a enim. Nunc
+                egestas euismod sapien, nec congue turpis. Aenean volutpat magna
+                at sem.
               </p>
             </div>
           </motion.div>
         </TabsContent>
 
-        <TabsContent value="composition" className="mt-0 focus-visible:outline-none">
+        <TabsContent
+          value="composition"
+          className="mt-0 focus-visible:outline-none"
+        >
           <motion.div {...fadeIn}>
             <div className="overflow-hidden rounded-2xl border border-slate-200/60 bg-white/40 backdrop-blur-sm shadow-sm">
               <table className="w-full text-left text-sm">
@@ -111,7 +120,10 @@ export function ProductTabs({ benefits }: ProductTabsProps) {
           </motion.div>
         </TabsContent>
 
-        <TabsContent value="application" className="mt-0 focus-visible:outline-none">
+        <TabsContent
+          value="application"
+          className="mt-0 focus-visible:outline-none"
+        >
           <motion.div {...fadeIn} className="space-y-6">
             <div className="rounded-2xl bg-white/40 p-6 border border-white/40">
               <h3 className="mb-4 text-lg font-bold text-slate-900">

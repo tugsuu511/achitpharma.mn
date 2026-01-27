@@ -5,19 +5,24 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { ProductDetail } from "@/types";
+import { t } from "@/lib/i18n";
+import { useLocale } from "@/lib/locale-store";
 
 interface ProductImagePaneProps {
   product: ProductDetail;
-  name: string;
 }
 
-export function ProductImagePane({ product, name }: ProductImagePaneProps) {
+export function ProductImagePane({ product }: ProductImagePaneProps) {
+  const locale = useLocale();
+  const name = t(product.nameKey, locale);
+  const imageAlt = product.imageAltKey ? t(product.imageAltKey, locale) : name;
+
   return (
     <div className="relative flex h-[50vh] w-full items-center justify-start md:h-screen md:w-[60%]">
       {/* Back Button */}
       <Link
         href="/products"
-        className="absolute left-6 top-6 z-30 flex h-10 w-10 items-center justify-center rounded-full bg-white/40 shadow-sm backdrop-blur transition hover:bg-white/70 md:hidden"
+        className="absolute left-6 top-1/2 -translate-y-1/2 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-white/40 shadow-sm backdrop-blur transition hover:bg-white/70"
       >
         <ArrowLeft className="h-5 w-5 text-slate-700" />
       </Link>
@@ -30,7 +35,7 @@ export function ProductImagePane({ product, name }: ProductImagePaneProps) {
         <div className="relative h-full w-full">
           <Image
             src={product.imageSrc || ""}
-            alt={name}
+            alt={imageAlt}
             fill
             className="object-contain object-center md:object-left" // Center on mobile, Left on desktop
             priority

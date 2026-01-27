@@ -7,10 +7,26 @@ export interface Product {
     category: string;
     ageRange: string;
     formFactor: string;
-    price?: string; // Unified from ProductDetail
-    imageSrc?: string; // Unified from ProductDetail/Grid
-    imageAlt?: string; // Unified from Grid
-    benefits?: string[]; // For detail page
+    price?: string;
+    imageSrc?: string;
+    imageAlt?: string;
+    benefits?: string[];
 }
 
-export type ProductDetail = Product; // Alias for backward compatibility if needed
+export interface ProductDetail {
+    id: string;
+    // i18n keys
+    nameKey: string;
+    descriptionKey: string;
+    badgeKey: string;
+    benefitsKeys: string[];
+    imageAltKey?: string;
+
+    // Visuals & Metadata
+    price?: string;
+    imageSrc?: string;
+    color?: string;
+    category?: string;
+    ageRange?: string;
+    formFactor?: string;
+}
