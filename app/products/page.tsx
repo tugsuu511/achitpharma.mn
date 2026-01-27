@@ -13,7 +13,6 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { t } from "@/lib/i18n";
 import { getProducts } from "@/data/products";
 import type { Product } from "@/types";
 

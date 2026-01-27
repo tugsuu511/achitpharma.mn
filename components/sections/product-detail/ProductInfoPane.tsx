@@ -5,20 +5,20 @@ import { ProductTabs } from "./ProductTabs";
 import { t } from "@/lib/i18n";
 import { useLocale } from "@/lib/locale-store";
 
+
 interface ProductInfoPaneProps {
   product: ProductDetail;
 }
 
-export function ProductInfoPane({ product }: ProductInfoPaneProps) {
-  const locale = useLocale();
-
-  const name = t(product.nameKey, locale);
-  const description = t(product.descriptionKey, locale);
-  const benefits = product.benefitsKeys.map((key) => t(key, locale));
-
+export function ProductInfoPane({
+  product,
+  name,
+  description,
+  benefits,
+}: ProductInfoPaneProps) {
   return (
     <div className="flex w-full flex-col bg-white/30 text-slate-900 backdrop-blur-xl md:h-screen md:w-[40%] md:overflow-y-auto border-l border-white/20 shadow-[-10px_0_30px_rgba(0,0,0,0.02)]">
-      {/* ✅ босоо голлуулах контейнер */}
+      {/* ✅ Center container */}
       <div className="flex flex-1 flex-col justify-center px-6 py-10 md:px-10 md:py-12">
         {/* Header */}
         <div className="space-y-5">
@@ -39,14 +39,13 @@ export function ProductInfoPane({ product }: ProductInfoPaneProps) {
 
         {/* Tabs */}
         <div className="mt-12">
-          <div className="min-h-[320px]">
-            <ProductTabs benefits={benefits} />
-          </div>
-        </div>
+          <ProductTabs benefits={benefits} />
+        </div> 
 
-        {/* (optional) доод амьсгал */}
+        {/* (optional) scroll breathing space */}
         <div className="h-6 md:h-0" />
       </div>
     </div>
   );
 }
+

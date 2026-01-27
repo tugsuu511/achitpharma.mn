@@ -33,7 +33,7 @@ export function PartnerLogos({ locale }: { locale: Locale }) {
 
   const partners: Partner[] = React.useMemo(
     () => [
-     {
+      {
         id: "us",
         name: "Advacare (USA)",
         logoSrc: "/brand/logo.png",
@@ -55,7 +55,7 @@ export function PartnerLogos({ locale }: { locale: Locale }) {
         logoSrc: "/brand/logo.png",
         x: 54.33,
         y: 49.11,
-        location: "Europe",
+        location: "Egypt",
       },
       {
         id: "jp",
@@ -66,7 +66,7 @@ export function PartnerLogos({ locale }: { locale: Locale }) {
         location: "Asia",
       },
     ],
-    []
+    [],
   );
 
   const [activeId, setActiveId] = React.useState<string | null>(null);

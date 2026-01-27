@@ -13,20 +13,5 @@ export interface Product {
     benefits?: string[];
 }
 
-export interface ProductDetail {
-    id: string;
-    // i18n keys
-    nameKey: string;
-    descriptionKey: string;
-    badgeKey: string;
-    benefitsKeys: string[];
-    imageAltKey?: string;
+export type ProductDetail = Product; // Alias for backward compatibility if needed
 
-    // Visuals & Metadata
-    price?: string;
-    imageSrc?: string;
-    color?: string;
-    category?: string;
-    ageRange?: string;
-    formFactor?: string;
-}

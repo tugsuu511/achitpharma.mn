@@ -5,6 +5,7 @@ import Link from "next/link";
 import { t } from "@/lib/i18n";
 import type { Locale } from "@/lib/locale-store";
 import type { Product } from "@/types";
+import { ProductDetail } from "@/types";
 
 export function ProductGrid({
   locale,
