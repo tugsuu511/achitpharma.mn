@@ -5,6 +5,7 @@
       nav: {
         home: "Нүүр",
         about: "Бидний тухай",
+        history: "Түүх",
         products: "Бүтээгдэхүүн",
         education: "Эрүүл мэндийн мэдээлэл",
         partners: "Хамтрагч",
@@ -270,6 +271,7 @@
       nav: {
         home: "Home",
         about: "About",
+        history: "History",
         products: "Products",
         education: "Health Education",
         partners: "Partners",

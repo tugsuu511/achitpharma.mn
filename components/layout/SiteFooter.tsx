@@ -54,7 +54,7 @@ function LogoLane({
 
   return (
     <div
-      className={`relative left-1/2 -translate-x-1/2 w-screen border-b bg-background/40 footer-marquee-mask ${className}`}
+      className={`relative left-1/2 -translate-x-1/2 w-full border-b bg-background/40 footer-marquee-mask ${className}`}
     >
       <div className="mx-auto py-3 overflow-hidden">
         <div className={`footer-marquee-track ${animClass}`}>

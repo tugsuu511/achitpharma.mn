@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -19,18 +18,11 @@ type Partner = {
 };
 
 const MAP_LIGHT = "/brand/world-map-light.jpg";
-const MAP_DARK = "/brand/world-map-dark.jpg";
 
 // ✅ footprint icon (public дотор байх ёстой)
 const FOOTPRINT_SRC = "/brand/footprint.png";
 
 export function PartnerLogos({ locale }: { locale: Locale }) {
-  const { resolvedTheme } = useTheme();
-
-  // ✅ hydration mismatch-ээс сэргийлнэ
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => setMounted(true), []);
-
   const partners: Partner[] = React.useMemo(
     () => [
       {
@@ -71,7 +63,7 @@ export function PartnerLogos({ locale }: { locale: Locale }) {
 
   const [activeId, setActiveId] = React.useState<string | null>(null);
 
-  const mapSrc = mounted && resolvedTheme === "dark" ? MAP_DARK : MAP_LIGHT;
+  const mapSrc = MAP_LIGHT;
 
   return (
     <section className="py-16">

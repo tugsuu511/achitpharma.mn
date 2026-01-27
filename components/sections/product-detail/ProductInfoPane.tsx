@@ -28,7 +28,7 @@ export function ProductInfoPane({
             {name}
           </h1>
 
-          <p className="text-lg leading-relaxed text-slate-600/90 font-medium max-w-md">
+          <p className="text-lg leading-relaxed text-slate-600/90 max-w-md">
             {description}
           </p>
 

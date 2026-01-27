@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { t } from "@/lib/i18n";
 import type { Locale } from "@/lib/locale-store";
+import { PRODUCT_IMAGES } from "@/data/product-assets";
 
 export function ProductsSection({ locale }: { locale: Locale }) {
   const products = [
@@ -15,6 +17,7 @@ export function ProductsSection({ locale }: { locale: Locale }) {
       name: t("products.advaIron.name", locale),
       description: t("products.advaIron.description", locale),
       badge: t("products.advaIron.badge", locale),
+      imageSrc: PRODUCT_IMAGES["adva-iron"],
       color: "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
     },
     {
@@ -22,6 +25,7 @@ export function ProductsSection({ locale }: { locale: Locale }) {
       name: t("products.advaBiotics.name", locale),
       description: t("products.advaBiotics.description", locale),
       badge: t("products.advaBiotics.badge", locale),
+      imageSrc: PRODUCT_IMAGES["adva-biotics"],
       color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
     },
     {
@@ -56,8 +60,20 @@ export function ProductsSection({ locale }: { locale: Locale }) {
           {products.map((product, index) => (
             <Card key={index} className="flex flex-col hover:shadow-lg transition-shadow">
               <CardHeader>
-                <div className="aspect-square w-full rounded-lg bg-gradient-to-br from-primary/10 to-primary/5 mb-4 flex items-center justify-center">
-                  <Package className="h-16 w-16 text-primary/40" />
+                <div className="relative mb-4 aspect-square w-full overflow-hidden rounded-lg bg-gradient-to-br from-primary/10 to-primary/5">
+                  {product.imageSrc ? (
+                    <Image
+                      src={product.imageSrc}
+                      alt={product.name}
+                      fill
+                      className="object-contain p-6"
+                      sizes="(max-width: 1024px) 50vw, 25vw"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center">
+                      <Package className="h-16 w-16 text-primary/40" />
+                    </div>
+                  )}
                 </div>
                 <div className="flex items-start justify-between gap-2">
                   <CardTitle className="text-lg">{product.name}</CardTitle>

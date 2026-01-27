@@ -9,7 +9,7 @@ import { t } from "@/lib/i18n";
 import { ProductDetailBackground } from "@/components/sections/product-detail/ProductDetailBackground";
 import { ProductImagePane } from "@/components/sections/product-detail/ProductImagePane";
 import { ProductInfoPane } from "@/components/sections/product-detail/ProductInfoPane";
-import { ProductDetail, Product } from "@/types";
+import { Product } from "@/types";
 import { PRODUCT_IMAGES } from "@/data/product-assets";
 
 
@@ -37,6 +37,14 @@ const PRODUCTS_DB: Record<string, Partial<Product>> = {
   },
 };
 
+// Route id (kebab-case) -> i18n key (camelCase)
+const I18N_PRODUCT_KEYS: Record<string, string> = {
+  "adva-iron": "advaIron",
+  "adva-biotics": "advaBiotics",
+  aclavcare: "aclavcare",
+  mozincare: "mozincare",
+};
+
 export default function ProductDetailPage() {
   const params = useParams();
   const locale = useLocale();
@@ -49,10 +57,18 @@ export default function ProductDetailPage() {
     return notFound();
   }
 
+  const i18nKey = product.id ? I18N_PRODUCT_KEYS[product.id] : undefined;
+
   // 2. Safe i18n Helpers
-  const getName = () => t(`products.${product.id}.name`, locale) || product.id || "Unknown";
-  const getDescription = () => (product.id ? t(`products.${product.id}.description`, locale) : "") || "Product description unavailable.";
-  const getBadge = () => (product.id ? t(`products.${product.id}.badge`, locale) : "") || "Premium";
+  const getName = () =>
+    (i18nKey ? t(`products.${i18nKey}.name`, locale) : "") ||
+    product.id ||
+    "Unknown";
+  const getDescription = () =>
+    (i18nKey ? t(`products.${i18nKey}.description`, locale) : "") ||
+    "Product description unavailable.";
+  const getBadge = () =>
+    (i18nKey ? t(`products.${i18nKey}.badge`, locale) : "") || "Premium";
   
   const getBenefits = () => [
     "Supports daily immunity",

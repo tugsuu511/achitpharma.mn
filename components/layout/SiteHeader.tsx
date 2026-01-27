@@ -15,7 +15,6 @@ import { useLocale } from "@/lib/locale-store";
 import { useHeaderBehavior } from "./header/useHeaderBehavior";
 import { NavLinks, type NavItem } from "./header/NavLinks";
 import { MobileMenu } from "./header/MobileMenu";
-import DarkMode from "./header/DarkMode";
 
 
 export function SiteHeader() {
@@ -143,14 +142,12 @@ export function SiteHeader() {
               </nav>
 
               {/* Right */}
-              <div className="flex items-center gap-2">
+              <div className="ml-auto flex items-center gap-2">
                 <LanguageToggle />
 
                 <Button asChild size="sm" className="hidden md:inline-flex" onClick={closeAll}>
                   <Link href="/products">{t("header.order", locale)}</Link>
                 </Button>
-
-                <DarkMode/>
 
                 <MobileMenu
                   open={sheetOpen}
