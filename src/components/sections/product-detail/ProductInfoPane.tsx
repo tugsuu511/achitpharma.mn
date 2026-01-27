@@ -3,6 +3,7 @@
 import { ProductDetail } from "@/types";
 import type { ProductTabsContent } from "./productDetailData";
 import { ProductTabs } from "./ProductTabs";
+import { AddToCartButton } from "@/components/cart/AddToCartButton";
 
 
 interface ProductInfoPaneProps {
@@ -33,10 +34,18 @@ export function ProductInfoPane({
             {description}
           </p>
 
-          <div className="flex items-baseline gap-4 pt-2">
+          <div className="flex flex-wrap items-center gap-4 pt-2">
             <span className="text-4xl font-bold text-slate-900 tracking-tight">
               {product.price}
             </span>
+            <AddToCartButton
+              product={{
+                id: product.id,
+                name,
+                price: product.price ?? "0",
+                imageSrc: product.imageSrc,
+              }}
+            />
           </div>
         </div>
 
