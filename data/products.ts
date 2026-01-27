@@ -1,8 +1,8 @@
 import { t } from "@/lib/i18n";
 import { Locale } from "@/types";
-import { Product } from "@/types";
+import { ResolvedProduct } from "@/types";
 
-export const getProducts = (locale: Locale): Product[] => [
+export const getProducts = (locale: Locale): ResolvedProduct[] => [
     {
         id: "adva-iron",
         name: t("products.advaIron.name", locale),

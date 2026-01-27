@@ -1,13 +1,13 @@
 "use client";
 
-import { ProductDetail } from "@/types";
+import { Product } from "@/components/sections/product-detail/types";
 import { ProductTabs } from "./ProductTabs";
 import { t } from "@/lib/i18n";
 import { useLocale } from "@/lib/locale-store";
 
 
 interface ProductInfoPaneProps {
-  product: ProductDetail;
+  product: Product;
 }
 
 export function ProductInfoPane({

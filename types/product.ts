@@ -1,4 +1,4 @@
-export interface Product {
+export interface ResolvedProduct {
     id: string;
     name: string;
     description: string;
@@ -13,5 +13,4 @@ export interface Product {
     benefits?: string[];
 }
 
-export type ProductDetail = Product; // Alias for backward compatibility if needed
-
+export type ProductDetail = Product;

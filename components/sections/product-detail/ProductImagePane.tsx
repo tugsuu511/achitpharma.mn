@@ -3,12 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { ProductDetail } from "@/types";
+import { Product } from "@/components/sections/product-detail/types";
 import { t } from "@/lib/i18n";
 import { useLocale } from "@/lib/locale-store";
 
 interface ProductImagePaneProps {
-  product: ProductDetail;
+  product: Product;
 }
 
 export function ProductImagePane({ product }: ProductImagePaneProps) {

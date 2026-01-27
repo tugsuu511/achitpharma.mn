@@ -1,7 +1,7 @@
-import { ProductDetail } from "@/types";
+import { Product } from "@/components/sections/product-detail/types";
 import { PRODUCT_IMAGES } from "@/data/product-assets";
 
-export const PRODUCT_DETAILS: ProductDetail[] = [
+export const PRODUCT_DETAILS: Product[] = [
     {
         id: "adva-iron",
         nameKey: "products.advaIron.name",
@@ -65,6 +65,6 @@ export const PRODUCT_DETAILS: ProductDetail[] = [
     },
 ];
 
-export function getProductById(id: string): ProductDetail | undefined {
+export function getProductById(id: string): Product | undefined {
     return PRODUCT_DETAILS.find((p) => p.id === id);
 }

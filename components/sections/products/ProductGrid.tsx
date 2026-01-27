@@ -4,8 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { t } from "@/lib/i18n";
 import type { Locale } from "@/lib/locale-store";
+<<<<<<< HEAD
 import type { Product } from "@/types";
 import { ProductDetail } from "@/types";
+=======
+import type { ResolvedProduct } from "@/types";
+>>>>>>> 8f6e4b0 (fix vercel deploy)
 
 export function ProductGrid({
   locale,
@@ -13,7 +17,7 @@ export function ProductGrid({
   empty,
 }: {
   locale: Locale;
-  products: Product[];
+  products: ResolvedProduct[];
   empty: boolean;
 }) {
   if (empty) {
