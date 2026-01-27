@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Package } from "lucide-react";
 import { ProductDetail } from "@/types";
 
 interface ProductImagePaneProps {
@@ -27,14 +27,20 @@ export function ProductImagePane({ product, name }: ProductImagePaneProps) {
         <div className="absolute left-[10%] top-1/2 h-[300px] w-[300px] -translate-y-1/2 rounded-full bg-white/40 blur-[80px] md:h-[600px] md:w-[600px]" />
 
         <div className="relative h-full w-full">
-          <Image
-            src={product.imageSrc || ""}
-            alt={name}
-            fill
-            className="object-contain object-center md:object-left" // Center on mobile, Left on desktop
-            priority
-            sizes="(max-width: 768px) 100vw, 60vw"
-          />
+          {product.imageSrc ? (
+            <Image
+              src={product.imageSrc}
+              alt={name}
+              fill
+              className="object-contain object-center md:object-left"
+              priority
+              sizes="(max-width: 768px) 100vw, 60vw"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center">
+              <Package className="h-20 w-20 text-slate-400/60" />
+            </div>
+          )}
         </div>
 
         {/* Gradient Mask for "Melting" Effect on the Right Edge */}

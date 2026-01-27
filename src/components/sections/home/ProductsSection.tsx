@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Package } from "lucide-react";
+import { useRef } from "react";
+import { ChevronLeft, ChevronRight, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,6 +12,15 @@ import type { Locale } from "@/lib/locale-store";
 import { PRODUCT_IMAGES } from "@/data/product-assets";
 
 export function ProductsSection({ locale }: { locale: Locale }) {
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
+
+  const scrollByAmount = (direction: "left" | "right") => {
+    const node = scrollerRef.current;
+    if (!node) return;
+    const amount = Math.max(node.clientWidth * 0.9, 320);
+    node.scrollBy({ left: direction === "left" ? -amount : amount, behavior: "smooth" });
+  };
+
   const products = [
     {
       id: "adva-iron",
@@ -42,6 +52,22 @@ export function ProductsSection({ locale }: { locale: Locale }) {
       badge: t("products.mozincare.badge", locale),
       color: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
     },
+    {
+      id: "ondalenz-4mg",
+      name: t("products.ondalenz4.name", locale),
+      description: t("products.ondalenz4.description", locale),
+      badge: t("products.ondalenz4.badge", locale),
+      imageSrc: PRODUCT_IMAGES["ondalenz-4mg"],
+      color: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200",
+    },
+    {
+      id: "ondalenz-8mg",
+      name: t("products.ondalenz8.name", locale),
+      description: t("products.ondalenz8.description", locale),
+      badge: t("products.ondalenz8.badge", locale),
+      imageSrc: PRODUCT_IMAGES["ondalenz-8mg"],
+      color: "bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-200",
+    },
   ];
 
   return (
@@ -56,42 +82,71 @@ export function ProductsSection({ locale }: { locale: Locale }) {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product, index) => (
-            <Card key={index} className="flex flex-col hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="relative mb-4 aspect-square w-full overflow-hidden rounded-lg bg-gradient-to-br from-primary/10 to-primary/5">
-                  {product.imageSrc ? (
-                    <Image
-                      src={product.imageSrc}
-                      alt={product.name}
-                      fill
-                      className="object-contain p-6"
-                      sizes="(max-width: 1024px) 50vw, 25vw"
-                    />
-                  ) : (
-                    <div className="flex h-full w-full items-center justify-center">
-                      <Package className="h-16 w-16 text-primary/40" />
-                    </div>
-                  )}
-                </div>
-                <div className="flex items-start justify-between gap-2">
-                  <CardTitle className="text-lg">{product.name}</CardTitle>
-                  <Badge className={product.color}>{product.badge}</Badge>
-                </div>
-              </CardHeader>
+        <div className="relative">
+          <div className="mb-6 flex items-center justify-end gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              size="icon"
+              onClick={() => scrollByAmount("left")}
+              aria-label={locale === "mn" ? "Зүүн тийш гүйлгэх" : "Scroll left"}
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              size="icon"
+              onClick={() => scrollByAmount("right")}
+              aria-label={locale === "mn" ? "Баруун тийш гүйлгэх" : "Scroll right"}
+            >
+              <ChevronRight className="h-5 w-5" />
+            </Button>
+          </div>
 
-              <CardContent className="flex-grow">
-                <CardDescription>{product.description}</CardDescription>
-              </CardContent>
+          <div
+            ref={scrollerRef}
+            className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {products.map((product) => (
+              <Card
+                key={product.id}
+                className="flex min-w-[260px] flex-col snap-start transition-shadow hover:shadow-lg md:min-w-[320px] lg:min-w-[340px]"
+              >
+                <CardHeader>
+                  <div className="relative mb-4 aspect-square w-full overflow-hidden rounded-lg bg-gradient-to-br from-primary/10 to-primary/5">
+                    {product.imageSrc ? (
+                      <Image
+                        src={product.imageSrc}
+                        alt={product.name}
+                        fill
+                        className="object-contain p-6"
+                        sizes="(max-width: 1024px) 80vw, 340px"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center">
+                        <Package className="h-16 w-16 text-primary/40" />
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex items-start justify-between gap-2">
+                    <CardTitle className="text-lg">{product.name}</CardTitle>
+                    <Badge className={product.color}>{product.badge}</Badge>
+                  </div>
+                </CardHeader>
 
-              <CardFooter>
-                <Button asChild variant="outline" className="w-full">
-                  <Link href={`/products/${product.id}`}>{t("products.learnMore", locale)}</Link>
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
+                <CardContent className="flex-grow">
+                  <CardDescription>{product.description}</CardDescription>
+                </CardContent>
+
+                <CardFooter>
+                  <Button asChild variant="outline" className="w-full">
+                    <Link href={`/products/${product.id}`}>{t("products.learnMore", locale)}</Link>
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 "use client";
 
 import { ProductDetail } from "@/types";
+import type { ProductTabsContent } from "./productDetailData";
 import { ProductTabs } from "./ProductTabs";
 
 
@@ -9,14 +10,14 @@ interface ProductInfoPaneProps {
   name: string;
   description: string;
   badge: string;
-  benefits: string[];
+  tabsContent: ProductTabsContent;
 }
 
 export function ProductInfoPane({
   product,
   name,
   description,
-  benefits,
+  tabsContent,
 }: ProductInfoPaneProps) {
   return (
     <div className="flex w-full flex-col bg-white/30 text-slate-900 backdrop-blur-xl md:h-screen md:w-[40%] md:overflow-y-auto border-l border-white/20 shadow-[-10px_0_30px_rgba(0,0,0,0.02)]">
@@ -41,7 +42,7 @@ export function ProductInfoPane({
 
         {/* Tabs */}
         <div className="mt-12">
-          <ProductTabs benefits={benefits} />
+          <ProductTabs content={tabsContent} />
         </div> 
 
         {/* (optional) scroll breathing space */}
@@ -50,4 +51,3 @@ export function ProductInfoPane({
     </div>
   );
 }
-

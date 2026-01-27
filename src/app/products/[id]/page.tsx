@@ -22,7 +22,7 @@ export default function ProductDetailPage() {
     return notFound();
   }
 
-  const { product, name, description, badge, benefits } = resolved;
+  const { product, name, description, badge, tabsContent } = resolved;
 
   return (
     <div className="relative min-h-screen w-full font-sans text-slate-800">
@@ -36,7 +36,7 @@ export default function ProductDetailPage() {
           name={name}
           description={description}
           badge={badge}
-          benefits={benefits}
+          tabsContent={tabsContent}
         />
       </div>
     </div>
