@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
@@ -17,7 +16,7 @@ export function ProductImagePane({ product, name }: ProductImagePaneProps) {
       {/* Back Button */}
       <Link
         href="/products"
-        className="absolute left-6 top-6 z-30 flex h-10 w-10 items-center justify-center rounded-full bg-white/40 shadow-sm backdrop-blur transition hover:bg-white/70 md:hidden"
+        className="absolute left-6 top-1/2 -translate-y-1/2 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-white/40 shadow-sm backdrop-blur transition hover:bg-white/70"
       >
         <ArrowLeft className="h-5 w-5 text-slate-700" />
       </Link>

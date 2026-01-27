@@ -14,3 +14,4 @@ export interface Product {
 }
 
 export type ProductDetail = Product; // Alias for backward compatibility if needed
+

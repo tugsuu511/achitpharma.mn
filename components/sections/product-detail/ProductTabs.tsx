@@ -5,7 +5,12 @@ import { Check, AlertCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
 
 const fadeIn = {
   initial: { opacity: 0, y: 10 },
@@ -16,7 +21,8 @@ const fadeIn = {
 
 interface ProductTabsProps {
   benefits: string[];
-}
+} 
+
 
 export function ProductTabs({ benefits }: ProductTabsProps) {
   return (
@@ -62,15 +68,20 @@ export function ProductTabs({ benefits }: ProductTabsProps) {
                 Who is it for?
               </h4>
               <p className="text-indigo-800/80 leading-relaxed font-medium">
-                Perfect for children aged 4-12 who need an extra boost of
-                immunity and daily vitamins. Scientifically formulated for fussy
-                eaters to ensure they get the nutrients they need to thrive.
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the s standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book. It has
+                survived not only five centuries
               </p>
             </div>
           </motion.div>
         </TabsContent>
 
-        <TabsContent value="composition" className="mt-0 focus-visible:outline-none">
+        <TabsContent
+          value="composition"
+          className="mt-0 focus-visible:outline-none"
+        >
           <motion.div {...fadeIn}>
             <div className="overflow-hidden rounded-2xl border border-slate-200/60 bg-white/40 backdrop-blur-sm shadow-sm">
               <table className="w-full text-left text-sm">
@@ -111,7 +122,10 @@ export function ProductTabs({ benefits }: ProductTabsProps) {
           </motion.div>
         </TabsContent>
 
-        <TabsContent value="application" className="mt-0 focus-visible:outline-none">
+        <TabsContent
+          value="application"
+          className="mt-0 focus-visible:outline-none"
+        >
           <motion.div {...fadeIn} className="space-y-6">
             <div className="rounded-2xl bg-white/40 p-6 border border-white/40">
               <h3 className="mb-4 text-lg font-bold text-slate-900">
