@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { ShoppingCart } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { LanguageToggle } from "./LanguageToggle";
@@ -11,6 +12,7 @@ import { LanguageToggle } from "./LanguageToggle";
 import { cn } from "@/lib/utils";
 import { t } from "@/lib/i18n";
 import { useLocale } from "@/lib/locale-store";
+import { useCartTotals } from "@/lib/cart-store";
 
 import { useHeaderBehavior } from "./header/useHeaderBehavior";
 import { NavLinks, type NavItem } from "./header/NavLinks";
@@ -20,6 +22,7 @@ import { MobileMenu } from "./header/MobileMenu";
 export function SiteHeader() {
   const locale = useLocale();
   const pathname = usePathname();
+  const { itemCount } = useCartTotals();
 
   const {
     sheetOpen,
@@ -144,6 +147,16 @@ export function SiteHeader() {
               {/* Right */}
               <div className="ml-auto flex items-center gap-2">
                 <LanguageToggle />
+
+                <Button asChild variant="outline" size="sm" className="gap-2" onClick={closeAll}>
+                  <Link href="/cart" aria-label={locale === "mn" ? "Сагс" : "Cart"}>
+                    <ShoppingCart className="h-4 w-4" />
+                    <span>{locale === "mn" ? "Сагс" : "Cart"}</span>
+                    <span className="rounded-full bg-primary px-2 py-0.5 text-xs font-bold text-primary-foreground">
+                      {itemCount}
+                    </span>
+                  </Link>
+                </Button>
 
                 <Button asChild size="sm" className="hidden md:inline-flex" onClick={closeAll}>
                   <Link href="/products">{t("header.order", locale)}</Link>

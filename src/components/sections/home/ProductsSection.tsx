@@ -10,6 +10,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { t } from "@/lib/i18n";
 import type { Locale } from "@/lib/locale-store";
 import { PRODUCT_IMAGES } from "@/data/product-assets";
+import { AddToCartButton } from "@/components/cart/AddToCartButton";
 
 export function ProductsSection({ locale }: { locale: Locale }) {
   const scrollerRef = useRef<HTMLDivElement | null>(null);
@@ -27,6 +28,7 @@ export function ProductsSection({ locale }: { locale: Locale }) {
       name: t("products.advaIron.name", locale),
       description: t("products.advaIron.description", locale),
       badge: t("products.advaIron.badge", locale),
+      price: "45,000₮",
       imageSrc: PRODUCT_IMAGES["adva-iron"],
       color: "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
     },
@@ -35,6 +37,7 @@ export function ProductsSection({ locale }: { locale: Locale }) {
       name: t("products.advaBiotics.name", locale),
       description: t("products.advaBiotics.description", locale),
       badge: t("products.advaBiotics.badge", locale),
+      price: "25,000₮",
       imageSrc: PRODUCT_IMAGES["adva-biotics"],
       color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
     },
@@ -43,6 +46,7 @@ export function ProductsSection({ locale }: { locale: Locale }) {
       name: t("products.aclavcare.name", locale),
       description: t("products.aclavcare.description", locale),
       badge: t("products.aclavcare.badge", locale),
+      price: "16,560₮",
       color: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
     },
     {
@@ -50,6 +54,7 @@ export function ProductsSection({ locale }: { locale: Locale }) {
       name: t("products.mozincare.name", locale),
       description: t("products.mozincare.description", locale),
       badge: t("products.mozincare.badge", locale),
+      price: "16,650₮",
       color: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
     },
     {
@@ -57,6 +62,7 @@ export function ProductsSection({ locale }: { locale: Locale }) {
       name: t("products.ondalenz4.name", locale),
       description: t("products.ondalenz4.description", locale),
       badge: t("products.ondalenz4.badge", locale),
+      price: "19,300₮",
       imageSrc: PRODUCT_IMAGES["ondalenz-4mg"],
       color: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200",
     },
@@ -65,6 +71,7 @@ export function ProductsSection({ locale }: { locale: Locale }) {
       name: t("products.ondalenz8.name", locale),
       description: t("products.ondalenz8.description", locale),
       badge: t("products.ondalenz8.badge", locale),
+      price: "29,200₮",
       imageSrc: PRODUCT_IMAGES["ondalenz-8mg"],
       color: "bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-200",
     },
@@ -139,7 +146,18 @@ export function ProductsSection({ locale }: { locale: Locale }) {
                   <CardDescription>{product.description}</CardDescription>
                 </CardContent>
 
-                <CardFooter>
+                <CardFooter className="flex flex-col gap-2">
+                  <div className="w-full text-left text-base font-extrabold text-slate-900">
+                    {product.price}
+                  </div>
+                  <AddToCartButton
+                    product={{
+                      id: product.id,
+                      name: product.name,
+                      price: product.price,
+                      imageSrc: product.imageSrc,
+                    }}
+                  />
                   <Button asChild variant="outline" className="w-full">
                     <Link href={`/products/${product.id}`}>{t("products.learnMore", locale)}</Link>
                   </Button>

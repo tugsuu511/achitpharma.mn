@@ -5,6 +5,7 @@ import Link from "next/link";
 import { t } from "@/lib/i18n";
 import type { Locale } from "@/lib/locale-store";
 import type { Product } from "@/types";
+import { AddToCartButton } from "@/components/cart/AddToCartButton";
 
 export function ProductGrid({
   locale,
@@ -72,6 +73,20 @@ export function ProductGrid({
             <span className="rounded-full border px-2 py-1">
               {product.category}
             </span>
+          </div>
+
+          <div className="mt-4 flex items-center justify-between gap-3">
+            <div className="text-base font-extrabold text-slate-900">
+              {product.price ?? "0₮"}
+            </div>
+            <AddToCartButton
+              product={{
+                id: product.id,
+                name: product.name,
+                price: product.price ?? "0",
+                imageSrc: product.imageSrc,
+              }}
+            />
           </div>
 
           <div className="mt-4 text-sm font-medium underline-offset-4 group-hover:underline">
