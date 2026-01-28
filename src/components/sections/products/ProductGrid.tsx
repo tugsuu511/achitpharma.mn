@@ -1,11 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { t } from "@/lib/i18n";
 import type { Locale } from "@/lib/locale-store";
 import type { Product } from "@/types";
 import { AddToCartButton } from "@/components/cart/AddToCartButton";
+import { Button } from "@/components/ui/button";
 
 export function ProductGrid({
   locale,
@@ -16,6 +18,20 @@ export function ProductGrid({
   products: Product[];
   empty: boolean;
 }) {
+  const [warningId, setWarningId] = useState<string | null>(null);
+  const warningTimerRef = useRef<number | null>(null);
+
+  const showWarningFor = (id: string) => {
+    setWarningId(id);
+    if (warningTimerRef.current) {
+      window.clearTimeout(warningTimerRef.current);
+    }
+    warningTimerRef.current = window.setTimeout(() => {
+      setWarningId(null);
+      warningTimerRef.current = null;
+    }, 2000);
+  };
+
   if (empty) {
     return (
       <div className="rounded-2xl border bg-muted/30 p-10 text-center">
@@ -75,9 +91,18 @@ export function ProductGrid({
             </span>
           </div>
 
-          <div className="mt-4 flex items-center justify-between gap-3">
-            <div className="text-base font-extrabold text-slate-900">
-              {product.price ?? "0₮"}
+          <div className="mt-4 flex flex-col gap-2">
+            <div className="flex items-center gap-2">
+              <div className="text-base font-extrabold text-slate-900">
+                {product.price ?? "0₮"}
+              </div>
+              <div
+                className={`text-xs text-red-600 leading-4 ${
+                  warningId === product.id ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                Энэ бүтээгдэхүүн жороор олгодог тул захиалах боломжгүй.
+              </div>
             </div>
             <AddToCartButton
               product={{
@@ -85,12 +110,18 @@ export function ProductGrid({
                 name: product.name,
                 price: product.price ?? "0",
                 imageSrc: product.imageSrc,
+                requiresPrescription: product.requiresPrescription,
               }}
+              onPrescriptionAttempt={() => showWarningFor(product.id)}
             />
           </div>
 
-          <div className="mt-4 text-sm font-medium underline-offset-4 group-hover:underline">
-            {t("products.learnMore", locale) ?? "View details"}
+          <div className="mt-4">
+            <Button asChild variant="outline" className="w-full">
+              <Link href={`/products/${product.id}`}>
+                {t("products.learnMore", locale) ?? "View details"}
+              </Link>
+            </Button>
           </div>
         </Link>
       ))}

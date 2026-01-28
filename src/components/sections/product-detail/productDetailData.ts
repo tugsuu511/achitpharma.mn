@@ -8,31 +8,37 @@ export const PRODUCTS_DB: Record<string, Partial<Product>> = {
     id: "adva-iron",
     price: "45,000₮",
     imageSrc: PRODUCT_IMAGES["adva-iron"],
+    requiresPrescription: false,
   },
   "adva-biotics": {
     id: "adva-biotics",
     price: "25,000₮",
     imageSrc: PRODUCT_IMAGES["adva-biotics"],
+    requiresPrescription: false,
   },
   aclavcare: {
     id: "aclavcare",
     price: "16,560₮",
     imageSrc: "/products/aclavcare.png",
+    requiresPrescription: true,
   },
   mozincare: {
     id: "mozincare",
     price: "16,650₮",
     imageSrc: "/products/mozincare.png",
+    requiresPrescription: true,
   },
   "ondalenz-4mg": {
     id: "ondalenz-4mg",
     price: "19,300₮",
     imageSrc: PRODUCT_IMAGES["ondalenz-4mg"],
+    requiresPrescription: true,
   },
   "ondalenz-8mg": {
     id: "ondalenz-8mg",
     price: "29,200₮",
     imageSrc: PRODUCT_IMAGES["ondalenz-8mg"],
+    requiresPrescription: true,
   },
 };
 

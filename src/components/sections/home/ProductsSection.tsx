@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -14,6 +14,19 @@ import { AddToCartButton } from "@/components/cart/AddToCartButton";
 
 export function ProductsSection({ locale }: { locale: Locale }) {
   const scrollerRef = useRef<HTMLDivElement | null>(null);
+  const [warningId, setWarningId] = useState<string | null>(null);
+  const warningTimerRef = useRef<number | null>(null);
+
+  const showWarningFor = (id: string) => {
+    setWarningId(id);
+    if (warningTimerRef.current) {
+      window.clearTimeout(warningTimerRef.current);
+    }
+    warningTimerRef.current = window.setTimeout(() => {
+      setWarningId(null);
+      warningTimerRef.current = null;
+    }, 2000);
+  };
 
   const scrollByAmount = (direction: "left" | "right") => {
     const node = scrollerRef.current;
@@ -31,6 +44,7 @@ export function ProductsSection({ locale }: { locale: Locale }) {
       price: "45,000₮",
       imageSrc: PRODUCT_IMAGES["adva-iron"],
       color: "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
+      requiresPrescription: false,
     },
     {
       id: "adva-biotics",
@@ -40,6 +54,7 @@ export function ProductsSection({ locale }: { locale: Locale }) {
       price: "25,000₮",
       imageSrc: PRODUCT_IMAGES["adva-biotics"],
       color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
+      requiresPrescription: false,
     },
     {
       id: "aclavcare",
@@ -48,6 +63,7 @@ export function ProductsSection({ locale }: { locale: Locale }) {
       badge: t("products.aclavcare.badge", locale),
       price: "16,560₮",
       color: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
+      requiresPrescription: true,
     },
     {
       id: "mozincare",
@@ -56,6 +72,7 @@ export function ProductsSection({ locale }: { locale: Locale }) {
       badge: t("products.mozincare.badge", locale),
       price: "16,650₮",
       color: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
+      requiresPrescription: true,
     },
     {
       id: "ondalenz-4mg",
@@ -65,6 +82,7 @@ export function ProductsSection({ locale }: { locale: Locale }) {
       price: "19,300₮",
       imageSrc: PRODUCT_IMAGES["ondalenz-4mg"],
       color: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200",
+      requiresPrescription: true,
     },
     {
       id: "ondalenz-8mg",
@@ -74,6 +92,7 @@ export function ProductsSection({ locale }: { locale: Locale }) {
       price: "29,200₮",
       imageSrc: PRODUCT_IMAGES["ondalenz-8mg"],
       color: "bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-200",
+      requiresPrescription: true,
     },
   ];
 
@@ -146,18 +165,31 @@ export function ProductsSection({ locale }: { locale: Locale }) {
                   <CardDescription>{product.description}</CardDescription>
                 </CardContent>
 
-                <CardFooter className="flex flex-col gap-2">
-                  <div className="w-full text-left text-base font-extrabold text-slate-900">
-                    {product.price}
+                <CardFooter className="flex flex-col gap-3">
+                  <div className="flex w-full flex-col gap-2">
+                    <div className="flex items-center gap-2">
+                      <div className="text-base font-extrabold text-slate-900">
+                        {product.price}
+                      </div>
+                      <div
+                        className={`text-xs text-red-600 leading-4 ${
+                          warningId === product.id ? "opacity-100" : "opacity-0"
+                        }`}
+                      >
+                        Энэ бүтээгдэхүүн жороор олгодог тул захиалах боломжгүй.
+                      </div>
+                    </div>
+                    <AddToCartButton
+                      product={{
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        imageSrc: product.imageSrc,
+                        requiresPrescription: product.requiresPrescription,
+                      }}
+                      onPrescriptionAttempt={() => showWarningFor(product.id)}
+                    />
                   </div>
-                  <AddToCartButton
-                    product={{
-                      id: product.id,
-                      name: product.name,
-                      price: product.price,
-                      imageSrc: product.imageSrc,
-                    }}
-                  />
                   <Button asChild variant="outline" className="w-full">
                     <Link href={`/products/${product.id}`}>{t("products.learnMore", locale)}</Link>
                   </Button>

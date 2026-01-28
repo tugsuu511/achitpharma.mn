@@ -15,6 +15,7 @@ export const getProducts = (locale: Locale): Product[] => [
         category: "iron",
         ageRange: "3-5",
         formFactor: "syrup",
+        requiresPrescription: false,
     },
     {
         id: "adva-biotics",
@@ -27,6 +28,7 @@ export const getProducts = (locale: Locale): Product[] => [
         category: "probiotic",
         ageRange: "0-2",
         formFactor: "drops",
+        requiresPrescription: false,
     },
     {
         id: "aclavcare",
@@ -38,6 +40,7 @@ export const getProducts = (locale: Locale): Product[] => [
         category: "health",
         ageRange: "6-12",
         formFactor: "tablet",
+        requiresPrescription: true,
     },
     {
         id: "mozincare",
@@ -49,6 +52,7 @@ export const getProducts = (locale: Locale): Product[] => [
         category: "health",
         ageRange: "3-5",
         formFactor: "syrup",
+        requiresPrescription: true,
     },
     {
         id: "ondalenz-4mg",
@@ -61,6 +65,7 @@ export const getProducts = (locale: Locale): Product[] => [
         category: "antiemetic",
         ageRange: "child",
         formFactor: "odf",
+        requiresPrescription: true,
     },
     {
         id: "ondalenz-8mg",
@@ -73,5 +78,6 @@ export const getProducts = (locale: Locale): Product[] => [
         category: "antiemetic",
         ageRange: "adult",
         formFactor: "odf",
+        requiresPrescription: true,
     },
 ];

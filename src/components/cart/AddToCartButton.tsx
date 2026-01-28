@@ -13,10 +13,12 @@ type AddToCartButtonProps = {
     name: string;
     price: string;
     imageSrc?: string;
+    requiresPrescription?: boolean;
   };
+  onPrescriptionAttempt?: () => void;
 };
 
-export function AddToCartButton({ product }: AddToCartButtonProps) {
+export function AddToCartButton({ product, onPrescriptionAttempt }: AddToCartButtonProps) {
   const add = useCart((s) => s.add);
   const [added, setAdded] = React.useState(false);
 
@@ -36,11 +38,25 @@ export function AddToCartButton({ product }: AddToCartButtonProps) {
     window.setTimeout(() => setAdded(false), 900);
   };
 
+  const isLocked = Boolean(product.requiresPrescription);
+
   return (
-    <Button type="button" onClick={handleClick} className="gap-2">
+    <Button
+      type="button"
+      onClick={(e) => {
+        if (isLocked) {
+          e.preventDefault();
+          e.stopPropagation();
+          onPrescriptionAttempt?.();
+          return;
+        }
+        handleClick(e);
+      }}
+      className={`gap-2 ${isLocked ? "opacity-60 cursor-not-allowed" : ""}`}
+      aria-disabled={isLocked}
+    >
       <ShoppingCart className="h-4 w-4" />
-      {added ? "Нэмэгдлээ" : "Сагслах"}
+      {isLocked ? "Жороор олгох" : added ? "Нэмэгдлээ" : "Сагслах"}
     </Button>
   );
 }
-
