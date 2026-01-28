@@ -2,6 +2,7 @@ import { Noto_Sans, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
+import { FirstVisitDialog } from "@/components/layout/FirstVisitDialog";
 
 const geistSans = Noto_Sans({
   variable: "--font-geist-sans",
@@ -28,6 +29,7 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <SiteFooter />
         </div>
+        <FirstVisitDialog />
       </body>
     </html>
   );
