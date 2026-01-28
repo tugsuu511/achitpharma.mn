@@ -254,6 +254,11 @@
         logos: {
           title: "Манай хамтрагчид",
         },
+        table: {
+          title: "Хамтрагчдын жагсаалт",
+          partner: "Хамтрагч",
+          location: "Байршил",
+        },
       },
       productsPage: {
         hero: {
@@ -558,6 +563,11 @@
         },
         logos: {
           title: "Our Partners",
+        },
+        table: {
+          title: "Partner list",
+          partner: "Partner",
+          location: "Location",
         },
       },
       productsPage: {
