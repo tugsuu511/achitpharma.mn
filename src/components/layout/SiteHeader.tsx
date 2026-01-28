@@ -158,10 +158,6 @@ export function SiteHeader() {
                   </Link>
                 </Button>
 
-                <Button asChild size="sm" className="hidden md:inline-flex" onClick={closeAll}>
-                  <Link href="/products">{t("header.order", locale)}</Link>
-                </Button>
-
                 <MobileMenu
                   open={sheetOpen}
                   setOpen={setSheetOpen}

@@ -4,6 +4,7 @@ import { ProductDetail } from "@/types";
 import type { ProductTabsContent } from "./productDetailData";
 import { ProductTabs } from "./ProductTabs";
 import { AddToCartButton } from "@/components/cart/AddToCartButton";
+import { useRef, useState } from "react";
 
 
 interface ProductInfoPaneProps {
@@ -20,6 +21,20 @@ export function ProductInfoPane({
   description,
   tabsContent,
 }: ProductInfoPaneProps) {
+  const [showWarning, setShowWarning] = useState(false);
+  const warningTimerRef = useRef<number | null>(null);
+
+  const showWarningOnce = () => {
+    setShowWarning(true);
+    if (warningTimerRef.current) {
+      window.clearTimeout(warningTimerRef.current);
+    }
+    warningTimerRef.current = window.setTimeout(() => {
+      setShowWarning(false);
+      warningTimerRef.current = null;
+    }, 2000);
+  };
+
   return (
     <div className="flex w-full flex-col bg-white/30 text-slate-900 backdrop-blur-xl md:h-screen md:w-[40%] md:overflow-y-auto border-l border-white/20 shadow-[-10px_0_30px_rgba(0,0,0,0.02)]">
       {/* ✅ Center container */}
@@ -34,17 +49,28 @@ export function ProductInfoPane({
             {description}
           </p>
 
-          <div className="flex flex-wrap items-center gap-4 pt-2">
-            <span className="text-4xl font-bold text-slate-900 tracking-tight">
-              {product.price}
-            </span>
+          <div className="flex flex-col gap-3 pt-2">
+            <div className="flex items-center gap-2">
+              <div className="text-4xl font-bold text-slate-900 tracking-tight">
+                {product.price}
+              </div>
+              <div
+                className={`text-xs text-red-600 leading-4 ${
+                  showWarning ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                Энэ бүтээгдэхүүн жороор олгодог тул захиалах боломжгүй.
+              </div>
+            </div>
             <AddToCartButton
               product={{
                 id: product.id,
                 name,
                 price: product.price ?? "0",
                 imageSrc: product.imageSrc,
+                requiresPrescription: product.requiresPrescription,
               }}
+              onPrescriptionAttempt={showWarningOnce}
             />
           </div>
         </div>

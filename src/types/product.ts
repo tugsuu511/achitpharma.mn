@@ -7,6 +7,7 @@ export interface Product {
     category: string;
     ageRange: string;
     formFactor: string;
+    requiresPrescription?: boolean;
     price?: string; // Unified from ProductDetail
     imageSrc?: string; // Unified from ProductDetail/Grid
     imageAlt?: string; // Unified from Grid
@@ -14,4 +15,3 @@ export interface Product {
 }
 
 export type ProductDetail = Product; // Alias for backward compatibility if needed
-
