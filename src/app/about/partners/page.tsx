@@ -7,9 +7,8 @@ export default function PartnersPage() {
   const locale = useLocale();
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* <PartnersHero locale={locale} /> */}
+    <main className="flex min-h-screen flex-col">
       <PartnerLogos locale={locale} />
-    </div>
+    </main>
   );
 }

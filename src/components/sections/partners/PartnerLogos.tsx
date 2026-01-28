@@ -66,7 +66,7 @@ export function PartnerLogos({ locale }: { locale: Locale }) {
   const mapSrc = MAP_LIGHT;
 
   return (
-    <section className="py-16">
+    <section className="pt-24 pb-10 md:pt-28 md:pb-16">
       <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-6xl">
         <h2 className="text-3xl font-bold text-center mb-10">
           {t("partners.logos.title", locale)}
@@ -112,7 +112,11 @@ export function PartnerLogos({ locale }: { locale: Locale }) {
                   }
                 >
                   {/* ✅ Footprint icon + 2x hover */}
-                  <span className="relative block h-9 w-9 transition-transform duration-200 ease-out group-hover:scale-200">
+                  <span
+                    className={`relative block h-7 w-7 sm:h-8 sm:w-8 md:h-9 md:w-9 transition-transform duration-200 ease-out group-hover:scale-150 md:group-hover:scale-200 ${
+                      activeId === p.id ? "scale-150 md:scale-200" : ""
+                    }`}
+                  >
                     {/* glow halo */}
                     <span className="pointer-events-none absolute left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-500/15 blur-md opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
 
@@ -134,7 +138,7 @@ export function PartnerLogos({ locale }: { locale: Locale }) {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 6, scale: 0.98 }}
                       transition={{ duration: 0.18 }}
-                      className="absolute left-6 top-0 z-20 w-64 -translate-y-1/2"
+                      className="absolute left-1/2 top-6 z-20 w-56 -translate-x-1/2 md:left-6 md:top-0 md:w-64 md:translate-x-0 md:-translate-y-1/2"
                       onMouseEnter={() => setActiveId(p.id)}
                       onMouseLeave={() => setActiveId(null)}
                     >
@@ -169,6 +173,51 @@ export function PartnerLogos({ locale }: { locale: Locale }) {
                 </AnimatePresence>
               </div>
             ))}
+          </div>
+        </div>
+
+        <div className="mt-10 overflow-hidden rounded-2xl border bg-card">
+          <div className="flex items-center justify-between gap-4 border-b bg-muted/50 px-6 py-4">
+            <h3 className="text-lg font-semibold">
+              {t("partners.table.title", locale)}
+            </h3>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[520px] text-left text-sm">
+              <thead className="bg-muted/40 text-muted-foreground">
+                <tr>
+                  <th scope="col" className="px-6 py-3 font-medium">
+                    {t("partners.table.partner", locale)}
+                  </th>
+                  <th scope="col" className="px-6 py-3 font-medium">
+                    {t("partners.table.location", locale)}
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y">
+                {partners.map((p) => (
+                  <tr key={`row-${p.id}`} className="hover:bg-muted/20">
+                    <td className="px-6 py-4">
+                      <div className="flex items-center gap-3">
+                        <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-md border bg-white">
+                          <Image
+                            src={p.logoSrc}
+                            alt={`${p.name} logo`}
+                            fill
+                            className="object-contain p-1"
+                            unoptimized
+                          />
+                        </div>
+                        <span className="font-medium">{p.name}</span>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 text-muted-foreground">
+                      {p.location ?? "-"}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
